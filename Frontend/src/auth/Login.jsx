@@ -51,11 +51,17 @@ const Login = () => {
 
       setSuccess("Login successful!");
       setForm({ email: "", password: "" });
+      
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("user", JSON.stringify(data.user));
+    navigate("/dashboard");
+    
     } catch (error) {
       setError(error.message || "Login failed");
     } finally {
       setLoading(false);
     }
+
   } 
   return (
     <div className='min-h-screen bg-gray-100 items-center justify-center flex'>
@@ -96,7 +102,6 @@ const Login = () => {
         </div>
 
       <button 
-      onClick={() => navigate("/dashboard")}
       type="submit" 
       disabled={loading} 
       className="w-full py-3 rounded-xl font-semibold bg-blue-600 text-white hover:bg-blue-700 transition-colors">
