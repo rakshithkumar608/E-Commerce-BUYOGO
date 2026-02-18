@@ -26,7 +26,7 @@ export const RevealLinks = () => {
             ease: "easeInOut",
           }}
         >
-          Shop Now
+          Shop Now →
         </motion.button>
       </div>
     </section>

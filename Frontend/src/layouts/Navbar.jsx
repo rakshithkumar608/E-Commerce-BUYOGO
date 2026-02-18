@@ -69,7 +69,7 @@ const Navbar = () => {
   const navigation = [
       { title: "Fashion", path: "/Fashion" },
       { title: "Electronics", path: "/Electronics" },
-      { title: "Food & Health", path: "/Food & Health" },
+      { title: "Store", path: "/Store" },
       { title: "Sports", path: "/Sports" },
   ]
     return (
