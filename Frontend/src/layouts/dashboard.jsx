@@ -4,6 +4,8 @@ import LoopText from "./LoopText";
 import CircularGallery from "../component/CircularGallery";
 import ScrollStack from "../component/ScrollStack";
 import ScrollStackItemList from "../layouts/ScrollStackItem";
+import Footer from "./Footer";
+import MainButton from "../component/MainButton";
 
 const Dashboard = () => {
 
@@ -28,6 +30,12 @@ const Dashboard = () => {
           <div className="w-full h-[600px]">
             <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} />
           </div>
+
+          <div className="flex justify-center mt-8">
+           
+           <MainButton buttonName="Explore More Top Deals" />
+
+          </div>
         </section>
 
         {/* Featured Offers - ScrollStack */}
@@ -46,6 +54,8 @@ const Dashboard = () => {
             <ScrollStackItemList />
           </ScrollStack>
         </section>
+
+        <Footer />
     </div>
   );
 };
