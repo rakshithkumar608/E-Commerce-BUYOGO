@@ -8,7 +8,8 @@ import {
   Users, 
   Shirt,
   Settings,
-  LogOut
+  LogOut,
+  ShoppingBasket
 } from 'lucide-react';
 
 const Sidebar = () => {
@@ -47,6 +48,11 @@ const Sidebar = () => {
              label: "Streetwear",
               icon: <Shirt size={20} /> 
         },
+        {
+            to: "/fashion/accessories",
+            label: "Accessories",
+            icon: <ShoppingBasket size={20}/>
+        }
       ];
 
       const linkStyle = ({ isActive }) => 
