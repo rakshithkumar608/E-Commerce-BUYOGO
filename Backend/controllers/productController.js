@@ -8,6 +8,8 @@ exports.getProducts = async (req, res) => {
       minPrice,
       maxPrice,
       sort,
+      page = 1,
+      limit = 20,
     } = req.query;
 
     let query = {};

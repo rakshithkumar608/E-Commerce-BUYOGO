@@ -2,7 +2,7 @@ import Lottie from 'lottie-react'
 import animationData from '../assets/lottie/LoginAnimation.json'
 import Input from '../components/ui/Input'
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 const Register = () => {
@@ -12,7 +12,6 @@ const Register = () => {
     password: "",
   });
   
-  const navigate = useNavigate();
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -104,7 +103,6 @@ const Register = () => {
           />
 
           <button 
-          onClick={() => navigate("/dashboard")}
           type="submit" 
           disabled={loading}
           className="w-full py-3 rounded-xl font-semibold bg-blue-600 text-white hover:bg-blue-700 transition-colors">
