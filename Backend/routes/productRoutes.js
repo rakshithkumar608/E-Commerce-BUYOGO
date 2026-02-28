@@ -4,16 +4,17 @@ const router = express.Router();
 const {
   getProducts,
   getSingleProduct,
+  rateProduct,
   createProduct,
-} = require("../controllers/productController");
+} = require("../controllers/ProductController");
 
-const auth = require("../middleware/authMiddleware");
-const role = require("../middleware/roleMiddleware");
 
 router.get("/", getProducts);
+
 router.get("/:id", getSingleProduct);
 
-// Only admin can create product
-router.post("/", auth, role("admin"), createProduct);
+router.post("/", createProduct);
+
+router.post("/:productId/rate", rateProduct);
 
 module.exports = router;
