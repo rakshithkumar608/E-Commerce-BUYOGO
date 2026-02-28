@@ -3,6 +3,7 @@ import animationData from '../assets/lottie/LoginAnimation.json'
 import Input from '../components/ui/Input'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { toast } from 'sonner'
 
 
 const Register = () => {
@@ -49,7 +50,7 @@ const Register = () => {
         throw new Error(data.message || "Registration failed")
       }
 
-      setSuccess("Registration successful! you can now login.")
+      toast.setSuccess("Registration successful! you can now login.")
       setForm({ name: "", email: "", password: "" });
     } catch (error) {
       setError(error.message || "Registration failed");

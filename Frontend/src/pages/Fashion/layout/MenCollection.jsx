@@ -49,7 +49,7 @@ const MenCollection = () => {
       await addToCartAPI(product._id, token);
 
       toast.success(`${product.name} added to cart 🛒`, {
-        style: { background: "#000", color: "#fff" },
+        style: { background: "green", color: "white" },
       });
 
     } catch (error) {

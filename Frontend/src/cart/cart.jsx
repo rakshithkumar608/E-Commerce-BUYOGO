@@ -2,9 +2,11 @@ import { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../store/cartSlice";
 import { getCart, updateQuantityAPI } from "../api/cart";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const cart = useSelector((state) => state.cart.items);
 
   const fetchCart = useCallback(async () => {
@@ -31,41 +33,165 @@ const Cart = () => {
   );
 
   return (
-    <div className="p-10 space-y-6">
-      <h2 className="text-3xl font-bold">Your Cart</h2>
-
-      {cart.map((item) => (
-        <div
-          key={item.product._id}
-          className="flex justify-between items-center border p-4 rounded"
+    <div className="max-w-6xl mx-auto px-4 py-12 md:py-16 min-h-screen">
+      <div className="border-b border-gray-200 pb-6 mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">
+          Shopping Cart
+        </h2>
+        <button
+          onClick={() => navigate("/fashion")}
+          className="group flex items-center text-sm font-medium text-gray-500 hover:text-black transition-colors "
         >
-          <div>
-            <h3>{item.product.name}</h3>
-            <p>${item.product.price}</p>
+          <svg 
+            className="w-4 h-4 mr-2 transform group-hover:-translate-x-1 transition-transform" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Back to Shopping
+        </button>
+      </div>
+
+      {cart.length === 0 ? (
+        <div className="flex flex-col items-center justify-center py-20 bg-gray-50 rounded-3xl border border-dashed border-gray-300">
+          <div className="h-20 w-20 bg-gray-100 rounded-full flex items-center justify-center mb-6">
+            <svg
+              className="w-10 h-10 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+              />
+            </svg>
+          </div>
+          <p className="text-gray-500 text-xl font-medium mb-8">
+            Your cart is currently empty
+          </p>
+          <button
+            onClick={() => navigate("/fashion")}
+            className="bg-black text-white px-8 py-3.5 rounded-xl font-medium hover:bg-gray-800 transition-colors shadow-md"
+          >
+            Continue Shopping
+          </button>
+        </div>
+      ) : (
+        <div className="flex flex-col lg:flex-row gap-10">
+          {/* Cart Items List */}
+          <div className="flex-1 space-y-6">
+            {cart.map((item) => (
+              <div
+                key={item.product._id}
+                className="flex flex-col sm:flex-row items-start sm:items-center gap-6 p-5 bg-white border border-gray-200 rounded-2xl hover:shadow-sm transition-shadow"
+              >
+                {/* Image Placeholder (Swap with real img if you have one) */}
+                <div className="h-28 w-28 shrink-0 overflow-hidden rounded-xl border border-gray-100 bg-gray-50 flex items-center justify-center">
+                  <svg
+                    className="w-8 h-8 text-gray-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
+                  </svg>
+                </div>
+
+                {/* Product Details */}
+                <div className="flex-1 flex flex-col justify-between w-full">
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900 line-clamp-2">
+                      {item.product.name}
+                    </h3>
+                    <p className="mt-1 text-sm text-gray-500 font-medium">
+                      Fashion Collection
+                    </p>
+                  </div>
+                  <p className="mt-3 text-xl font-bold text-gray-900">
+                    ${item.product.price.toFixed(2)}
+                  </p>
+                </div>
+
+                {/* Quantity Controls */}
+                <div className="flex flex-col sm:items-end gap-3 w-full sm:w-auto mt-4 sm:mt-0">
+                  <span className="text-xs text-gray-500 font-medium uppercase tracking-wider">
+                    Quantity
+                  </span>
+                  <div className="flex items-center border border-gray-300 rounded-lg bg-white overflow-hidden focus-within:ring-2 focus-within:ring-black">
+                    <input
+                      type="number"
+                      value={item.quantity}
+                      min="1"
+                      onChange={(e) =>
+                        handleQuantityChange(
+                          item.product._id,
+                          Number(e.target.value)
+                        )
+                      }
+                      className="w-20 h-10 text-center text-gray-900 bg-transparent border-none focus:ring-0 sm:text-base font-semibold appearance-none outline-none"
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
 
-          <input
-            type="number"
-            value={item.quantity}
-            min="1"
-            onChange={(e) =>
-              handleQuantityChange(
-                item.product._id,
-                Number(e.target.value)
-              )
-            }
-            className="border w-16 text-center"
-          />
+          {/* Order Summary Sidebar */}
+          <div className="w-full lg:w-96 bg-gray-50 p-6 md:p-8 rounded-3xl border border-gray-200 h-fit sticky top-8">
+            <h3 className="text-xl font-extrabold text-gray-900 mb-6">
+              Order Summary
+            </h3>
+            
+            <div className="space-y-4 text-sm text-gray-600 pb-6 border-b border-gray-200">
+              <div className="flex justify-between">
+                <span className="font-medium">Subtotal</span>
+                <span className="font-bold text-gray-900">
+                  ${total.toFixed(2)}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span className="font-medium">Shipping</span>
+                <span className="text-emerald-600 font-semibold">
+                  Calculated at checkout
+                </span>
+              </div>
+            </div>
+
+            <div className="flex justify-between py-6 items-center">
+              <span className="text-lg font-bold text-gray-900">Total</span>
+              <span className="text-3xl font-black text-gray-900 tracking-tight">
+                ${total.toFixed(2)}
+              </span>
+            </div>
+
+            <div className="space-y-3">
+              <button
+                onClick={() => navigate("/checkout")}
+                className="w-full bg-black text-white px-6 py-4 rounded-xl font-bold hover:bg-gray-800 transition-colors shadow-lg shadow-gray-200"
+              >
+                Proceed to Checkout
+              </button>
+              <button
+                onClick={() => navigate("/fashion/orders")}
+                className="w-full bg-white text-black border border-gray-300 px-6 py-4 rounded-xl font-bold hover:bg-gray-100 transition-colors"
+              >
+                View My Orders
+              </button>
+            </div>
+          </div>
         </div>
-      ))}
-
-      <h3 className="text-xl font-semibold">
-        Total: ${total.toFixed(2)}
-      </h3>
-
-      <button className="bg-black text-white px-6 py-2 rounded">
-        Checkout
-      </button>
+      )}
     </div>
   );
 };

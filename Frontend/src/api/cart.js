@@ -21,11 +21,17 @@ export const addToCart = async (productId, token) => {
 
 export const getCart = async () => {
   const token = getToken();
+  if (!token) return { items: [] };
+
   const res = await fetch(BASE_URL, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch cart");
+  }
 
   return res.json();
 };
@@ -42,4 +48,21 @@ export const updateQuantityAPI = async (productId, quantity) => {
   });
 
   return response.json();
+};
+
+export const removeFromCart = async (productId) => {
+  const token = getToken();
+
+  const res = await fetch(`${BASE_URL}/${productId}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to remove item");
+  }
+
+  return res.json();
 };

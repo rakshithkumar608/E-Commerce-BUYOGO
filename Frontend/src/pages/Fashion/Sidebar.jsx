@@ -9,7 +9,8 @@ import {
   Shirt,
   Settings,
   LogOut,
-  ShoppingBasket
+  ShoppingBasket,
+  Package
 } from 'lucide-react';
 
 const Sidebar = () => {
@@ -52,7 +53,12 @@ const Sidebar = () => {
             to: "/fashion/accessories",
             label: "Accessories",
             icon: <ShoppingBasket size={20}/>
-        }
+        },
+        {
+            to: "/fashion/orders",
+            label: "My Orders",
+            icon: <Package size={20}/>
+        },
       ];
 
       const linkStyle = ({ isActive }) => 

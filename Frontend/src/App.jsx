@@ -21,6 +21,9 @@ import StreetWear from "./pages/Fashion/layout/StreetWear";
 import Accessories from "./pages/Fashion/layout/Accessories";
 
 import Cart from "./cart/cart";
+import CheckoutPage from "./cart/CheckoutPage";
+import MyOrders from "./order/MyOrders";
+import AdminPage from "./admin/AdminPage";
 
 
 const App = () => {
@@ -56,6 +59,8 @@ const App = () => {
         <Route path="/dashboard" element={<Dashboard />} />
 
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/admin" element={<AdminPage />} />
 
 
         <Route path="/fashion" element={<FashionLayout />}>
@@ -67,6 +72,7 @@ const App = () => {
           <Route path="women" element={<WomenCollection />} />
           <Route path="streetwear" element={<StreetWear />} />
           <Route path="accessories" element={<Accessories />} />
+          <Route path="orders" element={<MyOrders />} />
 
         </Route>
 
