@@ -14,6 +14,14 @@ const productSchema = new mongoose.Schema(
          required: true 
         },
 
+     ratings: [
+  {
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    value: Number
+  }
+],
+averageRating: { type: Number, default: 0 },   
+
     image: String,
     category: {
       type: String,

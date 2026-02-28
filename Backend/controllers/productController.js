@@ -1,22 +1,18 @@
 const Product = require("../models/Product");
 
-// GET PRODUCTS WITH FILTER + PAGINATION
+
 exports.getProducts = async (req, res) => {
   try {
     const {
       category,
-      brand,
       minPrice,
       maxPrice,
       sort,
-      page = 1,
-      limit = 8,
     } = req.query;
 
     let query = {};
 
     if (category) query.category = category;
-    if (brand) query.brand = brand;
 
     if (minPrice || maxPrice) {
       query.price = {};
@@ -27,7 +23,7 @@ exports.getProducts = async (req, res) => {
     let sortOption = {};
     if (sort === "low") sortOption.price = 1;
     if (sort === "high") sortOption.price = -1;
-    if (sort === "new") sortOption.createdAt = -1;
+    if (sort === "rating") sortOption.averageRating = -1;
 
     const products = await Product.find(query)
       .sort(sortOption)
@@ -48,7 +44,7 @@ exports.getProducts = async (req, res) => {
     }
 };
 
-// GET SINGLE PRODUCT
+
 exports.getSingleProduct = async (req, res) => {
     try {
     const product = await Product.findById(req.params.id);
@@ -58,7 +54,42 @@ exports.getSingleProduct = async (req, res) => {
     }
 };
 
-// ADMIN CREATE PRODUCT
+exports.rateProduct = async (req, res) => {
+  try {
+    const { productId } = req.params;
+    const { value } = req.body;
+    const userId = req.user.id; // assuming JWT middleware
+
+    const product = await Product.findById(productId);
+
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    // Check if user already rated
+    const existingRating = product.ratings.find(
+      (r) => r.user.toString() === userId
+    );
+
+    if (existingRating) {
+      existingRating.value = value;
+    } else {
+      product.ratings.push({ user: userId, value });
+    }
+
+    // Calculate average
+    const total = product.ratings.reduce((sum, r) => sum + r.value, 0);
+    product.averageRating = total / product.ratings.length;
+
+    await product.save();
+
+    res.json({ message: "Rating updated", averageRating: product.averageRating });
+
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 exports.createProduct = async (req, res) => {
   try {
     const product = await Product.create(req.body);
