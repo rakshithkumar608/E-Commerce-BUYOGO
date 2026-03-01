@@ -44,6 +44,13 @@ exports.getCart = async (req, res) => {
       cart = await Cart.create({ user: req.user._id, items: [] });
     }
 
+    // Filter out items with null/deleted products (stale references after re-seeding)
+    const originalLength = cart.items.length;
+    cart.items = cart.items.filter((item) => item.product != null);
+    if (cart.items.length !== originalLength) {
+      await cart.save();
+    }
+
     res.json(cart);
   } catch (error) {
     res.status(500).json({ message: "Server error" });

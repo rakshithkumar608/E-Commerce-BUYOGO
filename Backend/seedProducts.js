@@ -127,25 +127,268 @@ const menProducts = [
   },
 ];
 
+
+const womenProducts = [
+  {
+    name: "Floral Maxi Dress",
+    description: "Elegant floral print maxi dress with a flowy silhouette, perfect for summer outings.",
+    price: 79.99,
+    image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600",
+    category: "women",
+    brand: "BloomStyle",
+    stock: 30,
+    averageRating: 4.6,
+  },
+  {
+    name: "High-Waist Skinny Jeans",
+    description: "Stretchy high-waist skinny jeans with a flattering fit, available in classic blue.",
+    price: 54.99,
+    image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600",
+    category: "women",
+    brand: "DenimCo",
+    stock: 45,
+    averageRating: 4.3,
+  },
+  {
+    name: "Silk Blouse - Ivory",
+    description: "Luxurious silk blouse with a relaxed fit, ideal for work or evening wear.",
+    price: 89.99,
+    image: "https://images.unsplash.com/photo-1598554747436-c9293d6a588f?w=600",
+    category: "women",
+    brand: "EliteStyle",
+    stock: 20,
+    averageRating: 4.5,
+  },
+  {
+    name: "Pleated Midi Skirt",
+    description: "Classic pleated midi skirt in soft fabric, pairs beautifully with any top.",
+    price: 44.99,
+    image: "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=600",
+    category: "women",
+    brand: "ChicWear",
+    stock: 35,
+    averageRating: 4.2,
+  },
+  {
+    name: "Leather Crossbody Handbag",
+    description: "Compact genuine leather crossbody bag with gold hardware, perfect for daily essentials.",
+    price: 129.99,
+    image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600",
+    category: "women",
+    brand: "LeatherLux",
+    stock: 25,
+    averageRating: 4.7,
+  },
+  {
+    name: "Knit Cardigan - Blush Pink",
+    description: "Soft oversized knit cardigan in blush pink, cozy and chic for layering.",
+    price: 59.99,
+    image: "https://images.unsplash.com/photo-1434389677669-e08b4cda3a20?w=600",
+    category: "women",
+    brand: "ComfortZone",
+    stock: 40,
+    averageRating: 4.1,
+  },
+  {
+    name: "Strappy Block Heel Sandals",
+    description: "Elegant strappy sandals with a comfortable block heel, great for parties and events.",
+    price: 69.99,
+    image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600",
+    category: "women",
+    brand: "StepUp",
+    stock: 30,
+    averageRating: 4.4,
+  },
+  {
+    name: "Tailored Blazer - Beige",
+    description: "Structured tailored blazer in beige, a must-have for power dressing.",
+    price: 119.99,
+    image: "https://images.unsplash.com/photo-1591369822096-ffd140ec948f?w=600",
+    category: "women",
+    brand: "EliteStyle",
+    stock: 15,
+    averageRating: 4.6,
+  },
+  {
+    name: "Wrap Dress - Emerald Green",
+    description: "Stunning emerald green wrap dress with a V-neckline and tie waist.",
+    price: 94.99,
+    image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600",
+    category: "women",
+    brand: "BloomStyle",
+    stock: 20,
+    averageRating: 4.8,
+  },
+  {
+    name: "Athletic Leggings - Black",
+    description: "High-performance black leggings with moisture-wicking fabric for workouts.",
+    price: 39.99,
+    image: "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=600",
+    category: "women",
+    brand: "SprintX",
+    stock: 60,
+    averageRating: 4.3,
+  },
+  {
+    name: "Oversized Sunglasses - Tortoise",
+    description: "Chic oversized sunglasses with tortoise frame and UV400 protection.",
+    price: 34.99,
+    image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600",
+    category: "women",
+    brand: "ShadeCraft",
+    stock: 50,
+    averageRating: 4.2,
+  },
+  {
+    name: "Cashmere Scarf - Camel",
+    description: "Ultra-soft cashmere scarf in camel, a timeless winter accessory.",
+    price: 74.99,
+    image: "https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=600",
+    category: "women",
+    brand: "LuxWrap",
+    stock: 35,
+  },
+];
+
+const streetwearProducts = [
+  {
+    name: "Oversized Graphic Hoodie",
+    description: "Bold graphic print oversized hoodie with kangaroo pocket, heavyweight cotton blend.",
+    price: 79.99,
+    image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600",
+    category: "streetwear",
+    brand: "StreetKing",
+    stock: 40,
+    averageRating: 4.6,
+  },
+  {
+    name: "Cargo Jogger Pants",
+    description: "Utility cargo joggers with multiple pockets and elastic cuffs, relaxed fit.",
+    price: 64.99,
+    image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600",
+    category: "streetwear",
+    brand: "UrbanEdge",
+    stock: 35,
+    averageRating: 4.3,
+  },
+  {
+    name: "Distressed Denim Jacket",
+    description: "Washed-out distressed denim jacket with raw hem and patch details.",
+    price: 109.99,
+    image: "https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=600",
+    category: "streetwear",
+    brand: "DenimCo",
+    stock: 20,
+    averageRating: 4.5,
+  },
+  {
+    name: "Tie-Dye Crewneck Tee",
+    description: "Vibrant tie-dye pattern on 100% cotton, oversized drop-shoulder fit.",
+    price: 39.99,
+    image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600",
+    category: "streetwear",
+    brand: "StreetKing",
+    stock: 55,
+    averageRating: 4.1,
+  },
+  {
+    name: "High-Top Sneakers - White",
+    description: "Classic high-top sneakers in crisp white leather with chunky sole.",
+    price: 119.99,
+    image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600",
+    category: "streetwear",
+    brand: "SprintX",
+    stock: 30,
+    averageRating: 4.7,
+  },
+  {
+    name: "Windbreaker Jacket - Neon",
+    description: "Lightweight neon color-block windbreaker with zip front and hood.",
+    price: 89.99,
+    image: "https://images.unsplash.com/photo-1545594861-3bef43ff2fc8?w=600",
+    category: "streetwear",
+    brand: "UrbanEdge",
+    stock: 25,
+    averageRating: 4.4,
+  },
+  {
+    name: "Bucket Hat - Black",
+    description: "Cotton twill bucket hat in solid black, embroidered logo detail.",
+    price: 24.99,
+    image: "https://images.unsplash.com/photo-1588850561407-ed78c334e67a?w=600",
+    category: "streetwear",
+    brand: "StreetKing",
+    stock: 60,
+    averageRating: 4.0,
+  },
+  {
+    name: "Baggy Skate Jeans",
+    description: "Relaxed baggy fit skate jeans in medium wash with reinforced knees.",
+    price: 69.99,
+    image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600",
+    category: "streetwear",
+    brand: "DenimCo",
+    stock: 40,
+    averageRating: 4.2,
+  },
+  {
+    name: "Cropped Puffer Vest",
+    description: "Trendy cropped puffer vest with stand collar, warm and lightweight.",
+    price: 94.99,
+    image: "https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?w=600",
+    category: "streetwear",
+    brand: "ComfortZone",
+    stock: 20,
+    averageRating: 4.5,
+  },
+  {
+    name: "Chain Necklace - Silver",
+    description: "Chunky silver-tone chain necklace, a statement streetwear accessory.",
+    price: 29.99,
+    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600",
+    category: "streetwear",
+    brand: "ShadeCraft",
+    stock: 50,
+    averageRating: 4.1,
+  },
+  {
+    name: "Mesh Basketball Jersey",
+    description: "Breathable mesh basketball jersey with contrast piping, oversized cut.",
+    price: 49.99,
+    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600",
+    category: "streetwear",
+    brand: "SprintX",
+    stock: 35,
+    averageRating: 4.3,
+  },
+  {
+    name: "Snapback Cap - Red",
+    description: "Flat-brim snapback cap in bold red with embroidered front logo.",
+    price: 27.99,
+    image: "https://images.unsplash.com/photo-1588850561407-ed78c334e67a?w=600",
+    category: "streetwear",
+    brand: "StreetKing",
+    stock: 45,
+    averageRating: 4.2,
+  },
+];
+
 const seedProducts = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
     console.log("MongoDB Connected");
 
-    // Remove existing men products to avoid duplicates
+    // Remove existing products to avoid duplicates
     await Product.deleteMany({});
-    await Product.insertMany([
-  ...menProducts,
-  ...womenProducts,
-  ...streetwearProducts,
-  ...accessoriesProducts,
-]);
-
-    const created = await Product.insertMany(menProducts);
-    console.log(`✅ Seeded ${created.length} men's products successfully!`);
+    const created = await Product.insertMany([
+      ...menProducts,
+      ...womenProducts,
+      ...streetwearProducts,
+    ]);
+    console.log(`✅ Seeded ${created.length} products successfully!`);
 
     created.forEach((p) => {
-      console.log(`  - ${p.name} ($${p.price})`);
+      console.log(`  - ${p.name} ($${p.price}) [${p.category}]`);
     });
 
     process.exit(0);

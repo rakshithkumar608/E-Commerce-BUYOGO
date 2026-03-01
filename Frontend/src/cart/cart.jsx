@@ -1,7 +1,7 @@
 import { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../store/cartSlice";
-import { getCart, updateQuantityAPI } from "../api/cart";
+import { getCart, updateQuantityAPI, removeFromCart } from "../api/cart";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
@@ -25,6 +25,15 @@ const Cart = () => {
   const handleQuantityChange = async (productId, quantity) => {
     await updateQuantityAPI(productId, quantity);
     fetchCart();
+  };
+
+  const handleRemove = async (productId) => {
+    try {
+      await removeFromCart(productId);
+      fetchCart();
+    } catch (error) {
+      console.error("Failed to remove item:", error);
+    }
   };
 
   const total = cart.reduce(
@@ -91,21 +100,13 @@ const Cart = () => {
                 key={item.product._id}
                 className="flex flex-col sm:flex-row items-start sm:items-center gap-6 p-5 bg-white border border-gray-200 rounded-2xl hover:shadow-sm transition-shadow"
               >
-                {/* Image Placeholder (Swap with real img if you have one) */}
-                <div className="h-28 w-28 shrink-0 overflow-hidden rounded-xl border border-gray-100 bg-gray-50 flex items-center justify-center">
-                  <svg
-                    className="w-8 h-8 text-gray-300"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.5}
-                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                    />
-                  </svg>
+                {/* Product Image */}
+                <div className="h-28 w-28 shrink-0 overflow-hidden rounded-xl border border-gray-100 bg-gray-50">
+                  <img
+                    src={item.product.image}
+                    alt={item.product.name}
+                    className="h-full w-full object-cover"
+                  />
                 </div>
 
                 {/* Product Details */}
@@ -142,6 +143,15 @@ const Cart = () => {
                       className="w-20 h-10 text-center text-gray-900 bg-transparent border-none focus:ring-0 sm:text-base font-semibold appearance-none outline-none"
                     />
                   </div>
+                  <button
+                    onClick={() => handleRemove(item.product._id)}
+                    className="mt-2 flex items-center gap-1.5 text-xs font-medium text-red-500 hover:text-red-700 transition-colors cursor-pointer"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                    Remove
+                  </button>
                 </div>
               </div>
             ))}
