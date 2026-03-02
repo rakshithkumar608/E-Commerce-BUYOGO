@@ -23,7 +23,7 @@ const Navbar = () => {
         <nav className="bg-gray-200 border-0 rounded">
             <div className="flex items-center space-x-8 py-3 px-2 max-w-7xl mx-auto md:px-8">
                 <div className="flex-none lg:flex-initial">
-                    <Link to="/">
+                    <Link to="/dashboard">
                         <Lottie 
                         className="w-40 h-20"
                         animationData={animationData} loop/>

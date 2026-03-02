@@ -114,7 +114,7 @@ const StreetWear = () => {
             />
             <h3 className="mt-3 font-semibold">{item.name}</h3>
             <p className="text-yellow-500">
-              ⭐ {item.averageRating?.toFixed(1) || 0}
+               {item.averageRating?.toFixed(1) || 0}
             </p>
             <p className="text-gray-600">${item.price}</p>
             <button
