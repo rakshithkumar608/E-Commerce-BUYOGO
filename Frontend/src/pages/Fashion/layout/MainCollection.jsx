@@ -21,7 +21,7 @@ export default function MainCollection() {
         >
           <div className="transition-transform duration-300 group-hover:-translate-y-3">
                         <TiltedCard
-                          imageSrc="https://images.unsplash.com/photo-1516822003754-cca485356ecb"
+                          imageSrc="https://i.pinimg.com/736x/85/3b/da/853bdaf3aa0f50676c426faa82d5ff4f.jpg"
                           altText="Men"
                           captionText="Men Collection"
                           imageWidth="100%"
@@ -38,7 +38,7 @@ export default function MainCollection() {
                   >
                     <div className="transition-transform duration-300 group-hover:-translate-y-3">
                       <TiltedCard
-                        imageSrc="https://images.unsplash.com/photo-1520975916090-3105956dac38"
+                        imageSrc="https://img.freepik.com/premium-photo/fashion-clothes-style-black-woman-with-green-rap-gen-z-hip-hop-aesthetic-outfit-cool-edgy-fashionable-look-designer-brand-apparel-attitude-teen-fashion-model-green-background_590464-98135.jpg"
                         altText="Women"
                         captionText="Women Collection"
                         imageWidth="100%"
@@ -53,7 +53,7 @@ export default function MainCollection() {
                   >
                     <div className="transition-transform duration-300 group-hover:-translate-y-3">
                       <TiltedCard
-                        imageSrc="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb"
+                        imageSrc="https://i.pinimg.com/564x/47/4d/aa/474daa2d11f798b8915147b89f4e3eae.jpg"
                         altText="Streetwear"
                         captionText="Streetwear"
                         imageWidth="100%"
@@ -68,7 +68,7 @@ export default function MainCollection() {
                   >
                     <div className="transition-transform duration-300 group-hover:-translate-y-3">
                       <TiltedCard
-                        imageSrc="https://images.unsplash.com/photo-1585386959984-a4155224a1ad"
+                        imageSrc="https://images.stockcake.com/public/9/6/1/961caa91-5403-4764-8e61-f27e9ef3df58_large/elegant-accessories-display-stockcake.jpg"
                         altText="Accessories"
                         captionText="Accessories"
                         imageWidth="100%"
