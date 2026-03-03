@@ -80,7 +80,7 @@ const Collections = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="text-5xl font-light leading-snug font-semibold"
+          className="text-5xl  leading-snug font-semibold"
         >
           Crafted with Precision.
           <br /> Designed for Distinction.
