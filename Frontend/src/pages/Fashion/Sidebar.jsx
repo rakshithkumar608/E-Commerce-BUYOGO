@@ -109,7 +109,7 @@ const Sidebar = () => {
             <nav className="space-y-1.5">
               
 
-                {navItems.map((item) => (
+                {navItems.map((item) =>  (
                     <NavLink 
                       key={item.to} 
                       to={item.to} 
