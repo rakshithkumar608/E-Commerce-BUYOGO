@@ -3,14 +3,15 @@ import { useEffect } from "react";
 import Lenis from "lenis";
 import { Toaster } from "sonner";
 
-
+// Auth 
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 
-
+// Dashboard
 import Dashboard from "./layouts/dashboard";
 
 
+// Fashion
 import FashionLayout from "./pages/Fashion/layout/FashionLayout";
 import MainCollection from "./pages/Fashion/layout/MainCollection";
 import Collections from "./pages/Fashion/layout/Collections";
@@ -20,10 +21,20 @@ import WomenCollection from "./pages/Fashion/layout/WomenCollection";
 import StreetWear from "./pages/Fashion/layout/StreetWear";
 import Accessories from "./pages/Fashion/layout/Accessories";
 
+// Cart Section
 import Cart from "./cart/cart";
 import CheckoutPage from "./cart/CheckoutPage";
 import MyOrders from "./order/MyOrders";
 import AdminPage from "./admin/AdminPage";
+
+// Electronics
+import ElectronicsLayouts from "./pages/Electronics/layout/ElectronicsLayouts";
+import TrendingElectronics from "./pages/Electronics/layout/TrendingElectronics";
+import TopCategories from "./pages/Electronics/layout/TopCategories";
+import Smartphones from "./pages/Electronics/layout/Smartphones";
+import Laptops from "./pages/Electronics/layout/Laptops";
+import Headphones from "./pages/Electronics/layout/Headphones";
+import CameraSection from "./pages/Electronics/layout/CameraSection";
 
 
 const App = () => {
@@ -62,7 +73,7 @@ const App = () => {
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/admin" element={<AdminPage />} />
 
-
+        {/* Fashion Section */}
         <Route path="/fashion" element={<FashionLayout />}>
 
           <Route index element={<MainCollection />} />
@@ -75,6 +86,20 @@ const App = () => {
           <Route path="orders" element={<MyOrders />} />
 
         </Route>
+
+        {/* Electronics Section */}
+
+        <Route path="/electronics" element={<ElectronicsLayouts />}>
+        <Route index element={<TopCategories />}/>
+        <Route path="trending" element={<TrendingElectronics />}/>
+        <Route path="smartphones" element={<Smartphones />}/>
+        <Route path="laptops" element={<Laptops />}/>
+        <Route path="headphones" element={<Headphones />}/>
+        <Route path="cameras" element={<CameraSection/>}/>
+        </Route>
+        
+
+        
 
       </Routes>
     </BrowserRouter>

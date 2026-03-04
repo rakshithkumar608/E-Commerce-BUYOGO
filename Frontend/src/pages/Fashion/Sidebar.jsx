@@ -94,10 +94,7 @@ const Sidebar = () => {
         <div>
             <div className="flex items-center justify-between px-2 mb-10 mt-2">
                 <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-zinc-900 rounded-xl flex items-center justify-center shadow-md">
-                        <span className="text-white font-black text-xl leading-none tracking-tighter">F</span>
-                    </div>
-                    <span className="font-bold text-2xl tracking-tight text-zinc-900">Fashion.</span>
+                    
                 </div>
                 
                 {/* Mobile Close Button */}
@@ -110,7 +107,7 @@ const Sidebar = () => {
             </div>
 
             <nav className="space-y-1.5">
-                <div className="px-4 pb-2 text-xs font-semibold text-zinc-400 uppercase tracking-wider">Discover</div>
+              
 
                 {navItems.map((item) => (
                     <NavLink 

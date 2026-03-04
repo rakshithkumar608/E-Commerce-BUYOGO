@@ -1,158 +1,121 @@
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import {
+  LayoutGrid,
+  Layers,
+  Sparkles,
+  Smartphone,
+  Laptop,
+  Headphones,
+  Gamepad2,
+  Settings,
+  LogOut,
+  Package,
+  Menu,
+  X
+} from "lucide-react";
 
-import heroImg from "../../../assets/images/collections/hero.jpg";
-import womenImg from "../../../assets/images/women/women1.avif";
-import menImg from "../../../assets/images/men/men1.avif";
-import accessoriesImg from "../../../assets/images/accessories/acc1.avif";
+const Sidebar = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8 }
-  }
-};
+  const navItems = [
+    { to: "/electronics", label: "Main Electronics", icon: <LayoutGrid size={20} />, end: true },
+    { to: "/electronics/collections", label: "Collections", icon: <Layers size={20} /> },
+    { to: "/electronics/new-brands", label: "Tech Brands", icon: <Sparkles size={20} /> },
+    { to: "/electronics/smartphones", label: "Smartphones", icon: <Smartphone size={20} /> },
+    { to: "/electronics/laptops", label: "Laptops", icon: <Laptop size={20} /> },
+    { to: "/electronics/audio", label: "Headphones", icon: <Headphones size={20} /> },
+    { to: "/electronics/gaming", label: "Gaming", icon: <Gamepad2 size={20} /> },
+    { to: "/electronics/orders", label: "My Orders", icon: <Package size={20} /> }
+  ];
 
-const Collections = () => {
+  const linkStyle = ({ isActive }) =>
+    `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 font-medium group ${
+      isActive
+        ? "bg-blue-500 text-white shadow-lg shadow-blue-500/30"
+        : "text-gray-400 hover:bg-gray-800 hover:text-white"
+    }`;
+
   return (
-    <div className="bg-[#f8f6f2] text-gray-900">
+    <>
+      {/* Mobile Toggle */}
+      <button
+        onClick={() => setIsOpen(true)}
+        className="md:hidden fixed top-4 left-4 z-40 p-2 bg-gray-900 border border-gray-700 rounded-lg text-white"
+      >
+        <Menu size={24} />
+      </button>
 
-      {/* ================= HERO ================= */}
-      <section className="relative h-[600px] overflow-hidden">
-
-        <motion.img
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 2 }}
-          src={heroImg}
-          alt="Luxury Collection"
-          className="w-full h-full object-cover"
+      {isOpen && (
+        <div
+          className="md:hidden fixed inset-0 bg-black/70 z-40"
+          onClick={() => setIsOpen(false)}
         />
+      )}
 
-        <div className="absolute inset-0 bg-black/30 flex items-center">
-          <div className="max-w-6xl mx-auto px-10 text-white">
-            <motion.h1
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              className="text-6xl md:text-7xl font-light leading-tight tracking-wide"
-            >
-              The Fall <br /> Collection
-            </motion.h1>
-
-            <motion.p
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              transition={{ delay: 0.3 }}
-              className="mt-6 max-w-xl text-lg text-gray-200"
-            >
-              Refined silhouettes. Timeless craftsmanship.
-              Designed for those who appreciate elegance.
-            </motion.p>
-
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              transition={{ delay: 0.6 }}
-            >
-              <Link
-                to="/fashion/women"
-                className="inline-block mt-10 border border-white px-8 py-3 text-sm tracking-widest uppercase hover:bg-white hover:text-black transition duration-500"
-              >
-                Explore Now
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= INTRO ================= */}
-      <section className="max-w-6xl mx-auto px-10 py-28 grid md:grid-cols-2 gap-16 items-center">
-
-        <motion.h2
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="text-5xl font-light leading-snug"
-        >
-          Crafted with Precision.
-          <br /> Designed for Distinction.
-        </motion.h2>
-
-        <motion.p
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          transition={{ delay: 0.2 }}
-          viewport={{ once: true }}
-          className="text-gray-600 text-lg leading-relaxed"
-        >
-          Every piece reflects our dedication to detail.
-          Premium fabrics meet contemporary design,
-          creating collections that transcend trends.
-        </motion.p>
-
-      </section>
-
-      {/* ================= COLLECTION CARDS ================= */}
-      <section className="max-w-6xl mx-auto px-10 pb-32 grid md:grid-cols-3 gap-14">
-
-        {[{
-          title: "Women",
-          img: womenImg,
-          link: "/fashion/women"
-        },
-        {
-          title: "Men",
-          img: menImg,
-          link: "/fashion/men"
-        },
-        {
-          title: "Accessories",
-          img: accessoriesImg,
-          link: "/fashion/accessories"
-        }].map((item, index) => (
-
-          <motion.div
-            key={index}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            transition={{ delay: index * 0.2 }}
-            viewport={{ once: true }}
-          >
-            <Link to={item.link} className="group block">
-
-              <div className="overflow-hidden rounded-lg">
-                <motion.img
-                  whileHover={{ scale: 1.08 }}
-                  transition={{ duration: 0.6 }}
-                  src={item.img}
-                  alt={item.title}
-                  className="w-full h-[450px] object-cover"
-                />
+      {/* Sidebar */}
+      <aside
+        className={`fixed md:static inset-y-0 left-0 z-50 h-screen w-72 bg-gray-950 border-r border-gray-800 p-6 flex flex-col justify-between transform transition-transform duration-300 ${
+          isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+        }`}
+      >
+        <div>
+          {/* Logo */}
+          <div className="flex items-center justify-between mb-10">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/40">
+                <span className="text-white font-bold text-lg">E</span>
               </div>
 
-              <h3 className="mt-6 text-2xl font-light tracking-wide">
-                {item.title}
-              </h3>
+              <span className="text-white text-xl font-semibold tracking-wide">
+                Electro.
+              </span>
+            </div>
 
-              <div className="h-[1px] bg-gray-300 mt-4 group-hover:bg-black transition duration-500"></div>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="md:hidden text-gray-400"
+            >
+              <X size={20} />
+            </button>
+          </div>
 
-            </Link>
-          </motion.div>
+          {/* Navigation */}
+          <nav className="space-y-2">
+            <div className="text-xs text-gray-500 uppercase tracking-wider mb-2">
+              Devices
+            </div>
 
-        ))}
+            {navItems.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end={item.end}
+                className={linkStyle}
+                onClick={() => setIsOpen(false)}
+              >
+                {item.icon}
+                {item.label}
+              </NavLink>
+            ))}
+          </nav>
+        </div>
 
-      </section>
+        {/* Bottom Section */}
+        <div className="space-y-2 border-t border-gray-800 pt-6">
+          <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white">
+            <Settings size={20} />
+            Settings
+          </button>
 
-    </div>
+          <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-red-400 hover:bg-red-500/20">
+            <LogOut size={20} />
+            Logout
+          </button>
+        </div>
+      </aside>
+    </>
   );
 };
 
-export default Collections;
+export default Sidebar;
