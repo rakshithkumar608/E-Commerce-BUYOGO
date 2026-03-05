@@ -115,7 +115,7 @@ const Sidebar = () => {
                       to={item.to} 
                       end={item.end} 
                       className={linkStyle}
-                      onClick={() => setIsOpen(false)} // Auto-close on mobile when a link is clicked
+                      onClick={() => setIsOpen(false)} 
                     >
                         <span className="shrink-0 transition-transform duration-300 group-hover:scale-110 group-active:scale-95">{item.icon}</span>
                         {item.label}

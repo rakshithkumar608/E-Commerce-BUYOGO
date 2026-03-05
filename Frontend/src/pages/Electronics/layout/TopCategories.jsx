@@ -2,8 +2,8 @@ import React from 'react'
 
 const TopCategories = () => {
   return (
-    <div>TopCategories</div>
+    <div className=""></div>
   )
 }
 
-export default TopCategories
+export default TopCategories;

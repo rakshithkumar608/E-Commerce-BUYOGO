@@ -13,9 +13,9 @@ const ElectronicsLayouts = () => {
       <div className="flex flex-1">
         <Sidebar />
 
-        <div className="flex-1 p-6 bg-gray-100">
+        <main className="flex-1 p-6 bg-gray-100">
           <Outlet />
-        </div>
+        </main>
       </div>
       <Footer />
     </div>
