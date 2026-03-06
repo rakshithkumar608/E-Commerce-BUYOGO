@@ -1,121 +1,159 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import {
-  LayoutGrid,
-  Layers,
-  Sparkles,
-  Smartphone,
-  Laptop,
-  Headphones,
-  Gamepad2,
-  Settings,
-  LogOut,
-  Package,
-  Menu,
-  X
-} from "lucide-react";
+import React from "react";
+import { Link } from "react-router-dom";
 
-const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const categories = [
+  { name: "Smartphones", icon: "📱", route: "/electronics/smartphones" },
+  { name: "Laptops", icon: "💻", route: "/electronics/laptops" },
+  { name: "Headphones", icon: "🎧", route: "/electronics/headphones" },
+  { name: "Cameras", icon: "📷", route: "/electronics/cameras" },
+  { name: "Gaming", icon: "🎮", route: "/electronics/gaming" },
+  { name: "Smart Home", icon: "🏠", route: "/electronics/smart-home" }
+];
 
-  const navItems = [
-    { to: "/electronics", label: "Main Electronics", icon: <LayoutGrid size={20} />, end: true },
-    { to: "/electronics/collections", label: "Collections", icon: <Layers size={20} /> },
-    { to: "/electronics/new-brands", label: "Tech Brands", icon: <Sparkles size={20} /> },
-    { to: "/electronics/smartphones", label: "Smartphones", icon: <Smartphone size={20} /> },
-    { to: "/electronics/laptops", label: "Laptops", icon: <Laptop size={20} /> },
-    { to: "/electronics/audio", label: "Headphones", icon: <Headphones size={20} /> },
-    { to: "/electronics/gaming", label: "Gaming", icon: <Gamepad2 size={20} /> },
-    { to: "/electronics/orders", label: "My Orders", icon: <Package size={20} /> }
-  ];
+const brands = [
+  "Apple",
+  "Samsung",
+  "Sony",
+  "Dell",
+  "HP",
+  "Canon"
+];
 
-  const linkStyle = ({ isActive }) =>
-    `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 font-medium group ${
-      isActive
-        ? "bg-blue-500 text-white shadow-lg shadow-blue-500/30"
-        : "text-gray-400 hover:bg-gray-800 hover:text-white"
-    }`;
+const trending = [
+  "iPhone 15 Pro",
+  "MacBook Pro M3",
+  "PlayStation 5",
+  "Sony WH1000XM5",
+  "DJI Pocket 3",
+  "Galaxy Watch 6"
+];
 
+const deals = [
+  { name: "Gaming Headset", discount: "20% OFF" },
+  { name: "Laptop Stand", discount: "30% OFF" },
+  { name: "Smartwatch", discount: "15% OFF" }
+];
+
+const TopCategories = () => {
   return (
-    <>
-      {/* Mobile Toggle */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="md:hidden fixed top-4 left-4 z-40 p-2 bg-gray-900 border border-gray-700 rounded-lg text-white"
-      >
-        <Menu size={24} />
-      </button>
+    <div className="space-y-16">
 
-      {isOpen && (
-        <div
-          className="md:hidden fixed inset-0 bg-black/70 z-40"
-          onClick={() => setIsOpen(false)}
-        />
-      )}
-
-      {/* Sidebar */}
-      <aside
-        className={`fixed md:static inset-y-0 left-0 z-50 h-screen w-72 bg-gray-950 border-r border-gray-800 p-6 flex flex-col justify-between transform transition-transform duration-300 ${
-          isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
-        }`}
-      >
+      {/* HERO SECTION */}
+      <section className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-xl p-12 flex items-center justify-between">
         <div>
-          {/* Logo */}
-          <div className="flex items-center justify-between mb-10">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center shadow-lg shadow-blue-500/40">
-                <span className="text-white font-bold text-lg">E</span>
+          <h1 className="text-4xl font-bold mb-4">
+            Upgrade Your Tech Life
+          </h1>
+          <p className="text-gray-400 mb-6">
+            Discover the latest electronics, gadgets, and smart devices.
+          </p>
+
+          <Link
+            to="/electronics/trending"
+            className="bg-blue-500 px-6 py-3 rounded-lg hover:bg-blue-600 transition"
+          >
+            Explore Gadgets
+          </Link>
+        </div>
+
+        <div className="text-7xl">⚡</div>
+      </section>
+
+      {/* TOP CATEGORIES */}
+      <section>
+        <h2 className="text-3xl font-bold mb-8">
+          Top Categories
+        </h2>
+
+        <div className="grid grid-cols-3 gap-6">
+
+          {categories.map((cat, index) => (
+            <Link
+              key={index}
+              to={cat.route}
+              className="bg-gray-900 p-8 rounded-xl hover:bg-gray-800 transition text-center"
+            >
+              <div className="text-4xl mb-4">
+                {cat.icon}
               </div>
 
-              <span className="text-white text-xl font-semibold tracking-wide">
-                Electro.
-              </span>
-            </div>
+              <h3 className="text-lg font-semibold">
+                {cat.name}
+              </h3>
+            </Link>
+          ))}
 
-            <button
-              onClick={() => setIsOpen(false)}
-              className="md:hidden text-gray-400"
+        </div>
+      </section>
+
+      {/* FEATURED BRANDS */}
+      <section>
+        <h2 className="text-3xl font-bold mb-8">
+          Featured Brands
+        </h2>
+
+        <div className="grid grid-cols-6 gap-6">
+
+          {brands.map((brand, index) => (
+            <div
+              key={index}
+              className="bg-gray-900 p-6 rounded-xl text-center hover:bg-gray-800"
             >
-              <X size={20} />
-            </button>
-          </div>
-
-          {/* Navigation */}
-          <nav className="space-y-2">
-            <div className="text-xs text-gray-500 uppercase tracking-wider mb-2">
-              Devices
+              {brand}
             </div>
+          ))}
 
-            {navItems.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                end={item.end}
-                className={linkStyle}
-                onClick={() => setIsOpen(false)}
-              >
-                {item.icon}
-                {item.label}
-              </NavLink>
-            ))}
-          </nav>
         </div>
+      </section>
 
-        {/* Bottom Section */}
-        <div className="space-y-2 border-t border-gray-800 pt-6">
-          <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white">
-            <Settings size={20} />
-            Settings
-          </button>
+      {/* TRENDING GADGETS */}
+      <section>
+        <h2 className="text-3xl font-bold mb-8">
+          Trending Gadgets
+        </h2>
 
-          <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-red-400 hover:bg-red-500/20">
-            <LogOut size={20} />
-            Logout
-          </button>
+        <div className="grid grid-cols-3 gap-6">
+
+          {trending.map((item, index) => (
+            <div
+              key={index}
+              className="bg-gray-900 p-6 rounded-xl hover:bg-gray-800"
+            >
+              {item}
+            </div>
+          ))}
+
         </div>
-      </aside>
-    </>
+      </section>
+
+      {/* FLASH DEALS */}
+      <section>
+        <h2 className="text-3xl font-bold mb-8">
+          Flash Deals
+        </h2>
+
+        <div className="grid grid-cols-3 gap-6">
+
+          {deals.map((deal, index) => (
+            <div
+              key={index}
+              className="bg-red-500 p-6 rounded-xl text-white"
+            >
+              <h3 className="text-lg font-semibold">
+                {deal.name}
+              </h3>
+
+              <p className="text-sm">
+                {deal.discount}
+              </p>
+            </div>
+          ))}
+
+        </div>
+      </section>
+
+    </div>
   );
 };
 
-export default Sidebar;
+export default TopCategories;

@@ -22,7 +22,7 @@ const Collections = () => {
 
     <div className="bg-[#f8f6f2] text-gray-900">
     
-      <section className="relative h-[600px] overflow-hidden">
+      <section className="relative h-150 overflow-hidden">
 
         <motion.img
           initial={{ scale: 1.1 }}
@@ -136,7 +136,7 @@ const Collections = () => {
                   transition={{ duration: 0.6 }}
                   src={item.img}
                   alt={item.title}
-                  className="w-full h-[450px] object-cover"
+                  className="w-full h-112.5 object-cover"
                 />
               </div>
 
@@ -144,7 +144,7 @@ const Collections = () => {
                 {item.title}
               </h3>
 
-              <div className="h-[1px] bg-gray-300 mt-4 group-hover:bg-black transition duration-500"></div>
+              <div className="h-px bg-gray-300 mt-4 group-hover:bg-black transition duration-500"></div>
 
             </Link>
           </motion.div>

@@ -50,7 +50,7 @@ const Register = () => {
         throw new Error(data.message || "Registration failed")
       }
 
-      toast.setSuccess("Registration successful! you can now login.")
+      toast.success("Registration successful! you can now login.")
       setForm({ name: "", email: "", password: "" });
     } catch (error) {
       setError(error.message || "Registration failed");
