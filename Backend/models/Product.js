@@ -10,11 +10,11 @@ const productSchema = new mongoose.Schema(
     description: String,
 
     price: {
-         type: Number, 
-         required: true 
+        type: Number, 
+        required: true 
         },
 
-     ratings: [
+    ratings: [
   {
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     value: Number
@@ -25,7 +25,7 @@ averageRating: { type: Number, default: 0 },
     image: String,
     category: {
       type: String,
-      enum: ["men", "women", "streetwear", "accessories", "electronics", "phones", "laptops", "headphones"],
+      enum: ["men", "women", "streetwear", "accessories", "electronics", "phones", "laptops", "headPhones", "camera"],
       required: true,
     },
     brand: String,

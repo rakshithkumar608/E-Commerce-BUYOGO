@@ -589,6 +589,169 @@ const smartPhones = [
   },
 ]
 
+const laptops = [
+  {
+  name:"MackBook Pro M3",
+  price: 1999,
+  image: "https://www.apple.com/newsroom/images/2023/10/apple-unveils-new-macbook-pro-featuring-m3-chips/article/Apple-MacBook-Pro-2up-231030_Full-Bleed-Image.jpg.large.jpg",
+  category: "laptop",
+  averageRating: 4.8
+  },
+
+  {
+  name:"Dell XPS 15",
+  price: 1799,
+  image: "https://i.pcmag.com/imagery/reviews/06jXYH66gbfR1chaGBUrRwI-22.fit_scale.size_400x225.v1569482561.jpg",
+  category: "laptop",
+  averageRating: 4.3
+  },
+
+  {
+  name:"HP Spectre x360",
+  price: 1499,
+  image: "https://www.cnet.com/a/img/resize/eae3840288fe99145fa33596146ecb448eff6a1b/hub/2021/04/12/ec06344f-4113-4966-9b4f-8fdcd129869f/014-hp-spectre-x360-14.jpg?auto=webp&fit=crop&height=900&width=1200",
+  category: "laptop",
+  averageRating: 4.2
+  },
+
+   {
+  name:"ASUS ROG Zephyrus G14",
+  price: 1699,
+  image: "https://rog.asus.com/media/1578096205427.jpg",
+  category: "laptop",
+  averageRating: 4.9
+  },
+
+   {
+  name:"Lenova ThinkPad X1 Carbon",
+  price: 1899,
+  image: "https://www.notebookcheck.net/fileadmin/_processed_/e/7/csm_thinkpad_X1Carbon_G13_teaser_fbb65abcbd.jpg",
+  category: "laptop",
+  averageRating: 4.4
+  },
+
+   {
+  name:"Acer Predator Helios 16",
+  price: 1599,
+  image: "https://assets.videomaker.com/2025/01/predator-helios-16-ai-emira-arx-banner_Secondary-Hero-XL.jpg",
+  category: "laptop",
+  averageRating: 4.2
+  },
+
+
+   {
+  name:"Microsoft Surface Laptop 5",
+  price: 1299,
+  image: "https://i.ytimg.com/vi/9_FQW36r0n8/sddefault.jpg",
+  category: "laptop",
+  averageRating: 4.1
+  },
+
+
+   {
+  name:"Samsung Galaxy Book 3 pro",
+  price: 1399,
+  image: "https://m.media-amazon.com/images/I/61CIDQ6PU8L.jpg",
+  category: "laptop",
+  averageRating: 4.4
+  },
+
+   {
+  name:"MSI Stealth 16 Studio",
+  price: 1799,
+  image: "https://i.pcmag.com/imagery/articles/062v76XLoLNZ5f9YDhgZ4Mi-2..v1671643377.jpg",
+  category: "laptop",
+  averageRating: 5
+  },
+];
+
+const headPhones = [
+  {
+    name: "Sony WH-1000XM5",
+    price: 399,
+    image: "",
+    category: "headPhones",
+    averageRating: 4.7
+  },
+
+  {
+    name: "Apple AirPods Max",
+    price: 549,
+    image: "",
+    category: "headPhones",
+    averageRating: 4.1
+  },
+
+  {
+    name: "Base QuietComfort Ultra",
+    price: 429,
+    image: "",
+    category: "headPhones",
+    averageRating: 4.2
+  },
+
+  {
+    name: "Sennheiser Momentum 4",
+    price: 349,
+    image: "",
+    category: "headPhones",
+    averageRating: 4.3
+  },
+
+  {
+    name: "JBL Tune 760NC",
+    price: 149,
+    image: "",
+    category: "headPhones",
+    averageRating: 4.4
+  },
+
+
+  {
+    name: "Beats Studio Pro",
+    price: 349,
+    image: "",
+    category: "headPhones",
+    averageRating: 4.5
+  },
+
+
+  {
+    name: "SteelSeries Arctis Nova Pro",
+    price: 349,
+    image: "",
+    category: "headPhones",
+    averageRating: 4.6
+  },
+
+  {
+    name: "Logitech G Pro X Wireless",
+    price: 229,
+    image: "",
+    category: "headPhones",
+    averageRating: 4.8
+  },
+
+  {
+    name: "Razer BlackShark V2 Pro",
+    price: 199,
+    image: "",
+    category: "headPhones",
+    averageRating: 4.9
+  },
+];
+
+const camera = [
+  {
+    name: "",
+    price: 299,
+    image: "",
+    category: "camera",
+    averageRating: 4.1
+  },
+
+]
+
 const seedProducts = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
@@ -602,6 +765,8 @@ const seedProducts = async () => {
       ...streetwearProducts,
       ...accessoriesProducts,
       ...smartPhones,
+      ...laptops,
+      ...headPhones,
     ]);
     console.log(`✅ Seeded ${created.length} products successfully!`);
 

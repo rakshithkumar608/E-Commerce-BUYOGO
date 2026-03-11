@@ -183,7 +183,7 @@ const Smartphones = () => {
       <main className="max-w-7xl mx-auto py-10 px-6 space-y-12 animate-entrance">
         
         {/* Banner Section - Only h1 uses Bespoke Serif */}
-        <div className="relative h-72 rounded-[32px] overflow-hidden industrial-panel">
+        <div className="relative h-72 rounded-4xl overflow-hidden industrial-panel">
           <img 
             src="https://png.pngtree.com/background/20210711/original/pngtree-double-eleven-mobile-phones-promote-atmospheric-black-banner-picture-image_1112228.jpg"
             alt="SmartPhone"
