@@ -25,7 +25,7 @@ averageRating: { type: Number, default: 0 },
     image: String,
     category: {
       type: String,
-      enum: ["men", "women", "streetwear", "accessories"],
+      enum: ["men", "women", "streetwear", "accessories", "electronics", "phones", "laptops", "headphones"],
       required: true,
     },
     brand: String,

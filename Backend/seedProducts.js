@@ -496,6 +496,99 @@ const accessoriesProducts = [
   },
 ];
 
+const smartPhones = [
+  {
+    name: "iPhone 16 ProMax",
+    description: "Apple’s latest flagship smartphone.",
+    price: 999,
+    image:"https://www.apple.com/newsroom/images/2024/09/apple-debuts-iphone-16-pro-and-iphone-16-pro-max/tile/Apple-iPhone-16-Pro-hero-240909-lp.jpg.news_app_ed.jpg",
+    category: "phones",
+    brand: "Apple",
+    averageRating: 4.8,
+  },
+
+  {
+    name: "Samsung Galaxy S26 Ultra",
+    description: "Samsung's premium Android device.",
+    price: 1999,
+    image:"https://r2.racunalo.com/wp-content/uploads/2024/08/Samsung-Galaxy-S26-Ultra-mozda-promijeni-ime-u-Galaxy-S26-Note-a-S26-u-Galaxy-S26-Pro-01.jpg",
+    category: "phones",
+    brand: "Samsung",
+    averageRating: 5,
+  },
+
+  {
+    name: "Google Pixel 8 Pro",
+    description: "Google's AI-powered smartphone.",
+    price: 999,
+    image:"https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/Google-Pixel-8-Pro-Andrew-Lanxon-CNET.jpg",
+    category: "phones",
+    brand: "Google",
+    averageRating: 4.3,
+  },
+
+    {
+    name: "OnePlus 12",
+    description: "A high-performance flagship phone",
+    price: 799,
+    image:"https://cdn.mos.cms.futurecdn.net/uwHePWeJEWQrEnRkuKJQLe.jpg",
+    category: "phones",
+    brand: "OnePlus",
+    averageRating: 4.5,
+  },
+
+
+      {
+    name: "Xiaomi Pro",
+    description: "A powerful smartphone featuring Leica camera.",
+    price: 899,
+    image:"https://static.toiimg.com/thumb/msid-114072170,width-1280,height-720,resizemode-4/114072170.jpg",
+    category: "phones",
+    brand: "Xiaomi",
+    averageRating: 4.5,
+  },
+
+    {
+    name: "Samsung Galaxy Z Foldd 5",
+    description: "A futuristic foldable smartphone.",
+    price: 1799,
+    image:"https://i0.wp.com/androidguys.com/wp-content/uploads/2023/07/Samsung-Galaxy-Z-Fold-5-2.jpg?fit=1600%2C1067&ssl=1",
+    category: "phones",
+    brand: "Samsung",
+    averageRating: 4.9,
+  },
+
+  {
+    name: "iphone 14 Plus",
+    description: "A large-screen iphone with excellent battery.",
+    price: 899,
+    image:"https://www.apple.com/newsroom/images/product/iphone/standard/Apple-iPhone-14-iPhone-14-Plus-yellow-2up-230307_inline.jpg.large.jpg",
+    category: "phones",
+    brand: "Apple",
+    averageRating: 4.2,
+  },
+
+  {
+    name: "ASUS ROG Phone7",
+    description: "A gaming powerhouse designed for gaming.",
+    price: 999,
+    image:"https://akm-img-a-in.tosshub.com/businesstoday/images/story/202305/untitled_design_-_2023-05-15t133155-sixteen_nine.jpg?size=948:533",
+    category: "phones",
+    brand: "Asus",
+    averageRating: 4.8,
+  },
+
+    {
+    name: "Nothing Phone(2)",
+    description: "A unique smartphone with transparent design.",
+    price: 699,
+    image:"https://i0.wp.com/www.smartprix.com/bytes/wp-content/uploads/2023/06/Nothing-Phone-2-first-look.png?fit=1200%2C675&ssl=1",
+    category: "phones",
+    brand: "nothing",
+    averageRating: 4.5,
+  },
+]
+
 const seedProducts = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
@@ -508,6 +601,7 @@ const seedProducts = async () => {
       ...womenProducts,
       ...streetwearProducts,
       ...accessoriesProducts,
+      ...smartPhones,
     ]);
     console.log(`✅ Seeded ${created.length} products successfully!`);
 
