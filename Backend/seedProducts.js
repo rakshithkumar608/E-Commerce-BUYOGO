@@ -669,7 +669,7 @@ const headPhones = [
   {
     name: "Sony WH-1000XM5",
     price: 399,
-    image: "",
+    image: "https://darlingretail.com/cdn/shop/products/9_40f19443-acd9-4d68-b23b-400915422d05_1000x.jpg?v=1665037820",
     category: "headPhones",
     averageRating: 4.7
   },
@@ -677,7 +677,7 @@ const headPhones = [
   {
     name: "Apple AirPods Max",
     price: 549,
-    image: "",
+    image: "https://hips.hearstapps.com/hmg-prod/images/apple-airpods-max-review-64959f6226b6d.jpg?crop=0.888888888888889xw:1xh;center,top&resize=1200:*",
     category: "headPhones",
     averageRating: 4.1
   },
@@ -685,7 +685,7 @@ const headPhones = [
   {
     name: "Base QuietComfort Ultra",
     price: 429,
-    image: "",
+    image: "https://cdn.mos.cms.futurecdn.net/isvq6hLzEzdGRbydwEiF7M.jpg",
     category: "headPhones",
     averageRating: 4.2
   },
@@ -693,7 +693,7 @@ const headPhones = [
   {
     name: "Sennheiser Momentum 4",
     price: 349,
-    image: "",
+    image: "https://hifigo.com/cdn/shop/products/sennheiser-momentum-4-wireless-bluetooth-headphone-for-crystal-clear-calls-hifigo-145814.jpg?v=1661442865&width=2048",
     category: "headPhones",
     averageRating: 4.3
   },
@@ -701,7 +701,7 @@ const headPhones = [
   {
     name: "JBL Tune 760NC",
     price: 149,
-    image: "",
+    image: "https://majorhifi.com/wp-content/uploads/PXL_20230527_200504348-scaled-1.png",
     category: "headPhones",
     averageRating: 4.4
   },
@@ -710,7 +710,7 @@ const headPhones = [
   {
     name: "Beats Studio Pro",
     price: 349,
-    image: "",
+    image: "https://sm.pcmag.com/pcmag_me/review/b/beats-stud/beats-studio-pro_aue9.jpg",
     category: "headPhones",
     averageRating: 4.5
   },
@@ -719,7 +719,7 @@ const headPhones = [
   {
     name: "SteelSeries Arctis Nova Pro",
     price: 349,
-    image: "",
+    image: "https://media.steelseriescdn.com/thumbs/filer_public/c5/13/c513206c-ec43-4212-8f62-e37db66a3b6f/arctis_nova_family_lp_img_mobile_arctis_nova_7_hero.jpg__540x540_q100_crop-scale_optimize_subsampling-2.jpg",
     category: "headPhones",
     averageRating: 4.6
   },
@@ -727,7 +727,7 @@ const headPhones = [
   {
     name: "Logitech G Pro X Wireless",
     price: 229,
-    image: "",
+    image: "https://www.3ona51.com/images/products/gaming-headphones/logitech-g-pro-x-2-wireless-gaming-headset-981-001263/600_2.jpg",
     category: "headPhones",
     averageRating: 4.8
   },
@@ -735,7 +735,7 @@ const headPhones = [
   {
     name: "Razer BlackShark V2 Pro",
     price: 199,
-    image: "",
+    image: "https://cdn.shopify.com/s/files/1/1398/4647/files/4_5d5a2921-8e08-44db-b9b7-4b40dcb455dc.png?v=1613660070",
     category: "headPhones",
     averageRating: 4.9
   },
@@ -743,12 +743,68 @@ const headPhones = [
 
 const camera = [
   {
-    name: "",
-    price: 299,
-    image: "",
-    category: "camera",
-    averageRating: 4.1
-  },
+  name: "Canon EOS R50",
+  price: 899,
+  image: "https://cdn.mos.cms.futurecdn.net/4SWhLs7tGQP39Z8UZgAkPU.jpg",
+  category: "camera",
+  averageRating: 4.6
+},
+{
+  name: "Sony Alpha a6400",
+  price: 998,
+  image: "https://cdn.mos.cms.futurecdn.net/v2/t:0,l:474,cw:3038,ch:1709,q:80,w:2560/aeCbENBAx8tNZBWAPCtjRU.jpg",
+  category: "camera",
+  averageRating: 4.7
+},
+{
+  name: "Nikon Z50",
+  price: 856,
+  image: "https://amateurphotographer.com/wp-content/uploads/sites/7/2019/12/143A9085-scaled.jpg",
+  category: "camera",
+  averageRating: 4.5
+},
+{
+  name: "Fujifilm X-T30 II",
+  price: 999,
+  image: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Fujifilm_X-T30_II.jpg",
+  category: "camera",
+  averageRating: 4.6
+},
+{
+  name: "Canon PowerShot G7 X Mark III",
+  price: 749,
+  image: "https://images.ctfassets.net/bht415zek091/1GcJjAgMwRvASLeb0XVYL0/050fb732cd9a6c4bd3fc1e762d8d1052/Canon_G7_X_Mark_III_%C3%A2___Kit_Shot_6-web.jpg",
+  category: "camera",
+  averageRating: 4.4
+},
+{
+  name: "Sony ZV-E10",
+  price: 798,
+  image: "https://i.rtings.com/assets/products/b4103Pbv/sony-zv-e10/design-medium.jpg?format=auto",
+  category: "camera",
+  averageRating: 4.6
+},
+{
+  name: "Panasonic Lumix GH5",
+  price: 1299,
+  image: "https://www.panasonic.com/content/dam/pim/mi/en/DC/DC-GH5/DC-GH5/ast-1416499.jpg.pub.crop.pc.thumb.640.1200.jpg",
+  category: "camera",
+  averageRating: 4.7
+},
+{
+  name: "Nikon D7500",
+  price: 999,
+  image: "https://images.squarespace-cdn.com/content/v1/58db872859cc68c3b09dfd44/1502374421217-WLUDOE8TB4VFM1JC8NPS/image-asset.jpeg",
+  category: "camera",
+  averageRating: 4.5
+},
+{
+  name: "Canon EOS 90D",
+  price: 1199,
+  image: "https://cdn.mos.cms.futurecdn.net/erFM5Za7ERU3H66jCXEPsa-2560-80.jpg",
+  category: "camera",
+  averageRating: 4.6
+}
 
 ]
 
