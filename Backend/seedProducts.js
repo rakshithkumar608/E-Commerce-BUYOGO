@@ -823,6 +823,7 @@ const seedProducts = async () => {
       ...smartPhones,
       ...laptop,
       ...headPhones,
+      ...camera,
     ]);
     console.log(`✅ Seeded ${created.length} products successfully!`);
 
