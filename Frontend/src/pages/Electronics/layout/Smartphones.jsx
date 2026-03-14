@@ -1,10 +1,6 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { 
-  ShoppingCart, Star, Filter, ChevronDown, Monitor
-} from 'lucide-react';
-import { getProducts } from "../../../api/product";
-import { toast } from "sonner";
-import { addToCart as addToCartAPI } from "../../../api/cart";
+import { Filter, ChevronDown, } from 'lucide-react';
+import { useProducts } from "../../../hooks/useProducts";
+import ProductCard from '../components/ProductCard';
 
 const IndustrialStyles = () => (
   <style>{`
@@ -133,47 +129,18 @@ const IndustrialStyles = () => (
 );
 
 const Smartphones = () => {
-  const [products, setProducts] = useState([]);
-  const [sort, setSort] = useState("low");
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const data = await getProducts({
-        category: "phones"
-      });
-      setProducts(data);
-    };
-    fetchProducts();
-  }, []);
+    const {
+    filteredProducts,
+    sort,
+    setSort,
+    minPrice,
+    setMinPrice,
+    maxPrice,
+    setMaxPrice,
+    handleAddToCart
+  } = useProducts("phones");
 
-  const filteredProducts = useMemo(() => {
-    let filtered = [...products];
-    if (minPrice) filtered = filtered.filter((p) => p.price >= Number(minPrice));
-    if (maxPrice) filtered = filtered.filter((p) => p.price <= Number(maxPrice));
-    if (sort === "low") filtered.sort((a, b) => a.price - b.price);
-    if (sort === "high") filtered.sort((a, b) => b.price - a.price);
-    if (sort === "rating") filtered.sort((a, b) => b.averageRating - a.averageRating);
-    return filtered;
-  }, [products, sort, minPrice, maxPrice]);
-
-  const handleAddToCart = async (product) => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      toast.error("Please login first");
-      return;
-    }
-    try {
-      await addToCartAPI(product._id, token);
-      toast.success(`${product.name} added to cart 🛒`, {
-        style: { background: "green", color: "white" },
-      });
-    } catch (error) {
-      toast.error("Failed to add to cart");
-      console.error(error);
-    }
-  };
 
   return (
     <div className="min-h-screen industrial-bg">
@@ -244,65 +211,19 @@ const Smartphones = () => {
 
         {/* Product Grid - Staggered Bolted Modules */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-20">
-          {filteredProducts.map((item, index) => (
-            <div
-              key={item._id}
-              className="industrial-panel group flex flex-col hover:-translate-y-2 hover:shadow-floating"
-              style={{ animationDelay: `${index * 50}ms` }}
-            >
-              {/* Product Housing */}
-              <div className="p-4">
-                <div className="relative overflow-hidden rounded-xl shadow-recessed bg-recessed aspect-square">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
-                  />
-                  <div className="absolute inset-0 scanline-screen pointer-events-none" />
-                </div>
-              </div>
-
-              {/* Specs & Data */}
-              <div className="p-6 pt-2 space-y-4 flex-1 flex flex-col">
-                <div>
-                  
-                  <h3 className="font-black text-lg text-text-primary leading-tight group-hover:text-accent-cyan transition-colors">
-                    {item.name}
-                  </h3>
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 bg-chassis/50 px-3 py-1 rounded-full shadow-recessed">
-                    <Star size={12} className="text-yellow-500" fill="currentColor" />
-                    <span className="font-mono font-bold text-[11px] text-text-primary">
-                      {item.averageRating?.toFixed(1) || 0}
-                    </span>
-                  </div>
-                  <span className="font-mono text-lg font-black text-text-primary">
-                    ${item.price}
-                  </span>
-                </div>
-
-                <button
-                  onClick={() => handleAddToCart(item)}
-                  className="mechanical-key w-full h-12 flex items-center justify-center gap-2 mt-auto"
-                >
-                  <ShoppingCart size={16} />
-                  Add to Cart
-                </button>
-              </div>
-
-              {/* Decorative Hardware Detail (Screws) */}
-              <div className="absolute top-6 right-6 flex gap-1 pointer-events-none opacity-20">
-                <div className="h-4 w-0.5 rounded-full bg-text-muted shadow-[inset_1px_1px_1px_rgba(0,0,0,0.2)]" />
-                <div className="h-4 w-0.5 rounded-full bg-text-muted shadow-[inset_1px_1px_1px_rgba(0,0,0,0.2)]" />
-              </div>
-            </div>
-          ))}
+          {filteredProducts.map((item) => (
+  <ProductCard
+    key={item._id}
+    item={item}
+    handleAddToCart={handleAddToCart}
+    showRating={true}
+    showCartButton={true}
+  />
+))}
         </div>
       </main>
     </div>
   );
-};
+  }
 
 export default Smartphones;

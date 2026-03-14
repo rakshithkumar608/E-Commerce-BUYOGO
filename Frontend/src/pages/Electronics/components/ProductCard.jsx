@@ -7,8 +7,9 @@ const ProductCard = ({
     item,
     handleAddToCart,
     showRating = true,
-    showCartButoon = true
+    showCartButton = true
 }) => {
+
     return (
         <div className="industrial-panel group flex flex-col hover:-translate-y-2 hover:shadow-floating">
 
@@ -44,7 +45,7 @@ const ProductCard = ({
                 </span>
 
                 {/* Conditional Cart Button */}
-          {showCartButoon && (
+          {showCartButton && (
           <button
             onClick={() => handleAddToCart(item)}
             className="mechanical-key w-full h-12 flex items-center justify-center gap-2 mt-auto"
