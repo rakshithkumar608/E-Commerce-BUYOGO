@@ -1,11 +1,8 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { 
-  ShoppingCart, Star, Filter, ChevronDown, Monitor
-} from 'lucide-react';
-import { getProducts } from "../../../api/product";
-import { toast } from "sonner";
-import { addToCart as addToCartAPI } from "../../../api/cart";
+
+import { Filter, ChevronDown} from 'lucide-react';
 import ProductCard from '../components/ProductCard';
+import { useProducts } from '../../../hooks/useProducts';
+import ProductFilters from '../../../component/ProductFilter';
 
 const IndustrialStyles = () => (
   <style>{`
@@ -134,47 +131,17 @@ const IndustrialStyles = () => (
 );
 
 const Headphones = () => {
-  const [products, setProducts] = useState([]);
-  const [sort, setSort] = useState("low");
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const data = await getProducts({
-        category: "phones"
-      });
-      setProducts(data);
-    };
-    fetchProducts();
-  }, []);
-
-  const filteredProducts = useMemo(() => {
-    let filtered = [...products];
-    if (minPrice) filtered = filtered.filter((p) => p.price >= Number(minPrice));
-    if (maxPrice) filtered = filtered.filter((p) => p.price <= Number(maxPrice));
-    if (sort === "low") filtered.sort((a, b) => a.price - b.price);
-    if (sort === "high") filtered.sort((a, b) => b.price - a.price);
-    if (sort === "rating") filtered.sort((a, b) => b.averageRating - a.averageRating);
-    return filtered;
-  }, [products, sort, minPrice, maxPrice]);
-
-  const handleAddToCart = async (product) => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      toast.error("Please login first");
-      return;
-    }
-    try {
-      await addToCartAPI(product._id, token);
-      toast.success(`${product.name} added to cart 🛒`, {
-        style: { background: "green", color: "white" },
-      });
-    } catch (error) {
-      toast.error("Failed to add to cart");
-      console.error(error);
-    }
-  };
+ 
+  const {
+    filteredProducts,
+    sort,
+    setSort,
+    minPrice,
+    setMinPrice,
+    maxPrice,
+    setMaxPrice,
+    handleAddToCart
+} = useProducts("headPhones")
 
   return (
     <div className="min-h-screen industrial-bg">
@@ -195,54 +162,20 @@ const Headphones = () => {
             <div className="flex items-center gap-3 mb-4">
             </div>
             <h1 className="text-6xl md:text-8xl font-bespoke heading-gradient drop-shadow-2xl">
-              Smart Phones
+              HeadPhones
             </h1>
           </div>
         </div>
 
         {/* Controls Bar - Recessed Mechanical Panels */}
-        <div className="flex flex-wrap gap-6 items-center industrial-panel p-6 bg-panel/30">
-          <div className="flex items-center gap-3 mr-4">
-            <Filter size={18} className="text-accent-cyan" />
-            <span className="font-mono text-xs font-bold uppercase tracking-wider text-text-muted">Filters</span>
-          </div>
-          
-          <div className="flex-1 flex flex-wrap gap-4">
-            <div className="relative group">
-              <select 
-                value={sort}
-                onChange={(e) => setSort(e.target.value)}
-                className="industrial-input px-5 py-3 pr-10 font-mono text-xs font-bold uppercase appearance-none cursor-pointer w-56"
-              >
-                <option value="low">Price: Low to High</option>
-                <option value="high">Price: High to Low</option>
-                <option value="rating">Price: Top Rated</option>
-              </select>
-              <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-text-muted" />
-            </div>
-
-            <div className="flex items-center gap-2">
-              <input 
-                value={minPrice}
-                onChange={(e) => setMinPrice(e.target.value)}
-                type="number"
-                placeholder="MIN_PRICE"
-                className="industrial-input text-black px-5 py-3 font-mono text-xs font-bold w-40 placeholder:opacity-40"
-              />
-              <span className="text-black font-mono">::</span>
-              <input 
-                type="number"
-                value={maxPrice}
-                onChange={(e) => setMaxPrice(e.target.value)}
-                placeholder="MAX_PRICE"
-                className="industrial-input px-5 py-3 font-mono text-xs font-bold w-40 placeholder:opacity-40"
-              />
-            </div>
-          </div>
-
-          
-        </div>
-
+        <ProductFilters
+  sort={sort}
+  setSort={setSort}
+  minPrice={minPrice}
+  setMinPrice={setMinPrice}
+  maxPrice={maxPrice}
+  setMaxPrice={setMaxPrice}
+/>
         {/* Product Grid - Staggered Bolted Modules */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-20">
           {filteredProducts.map((item) => (

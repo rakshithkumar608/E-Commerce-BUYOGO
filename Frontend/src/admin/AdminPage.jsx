@@ -202,7 +202,7 @@ const AdminPage = () => {
                         </div>
                       </td>
                       <td className="px-6 py-4 font-bold text-zinc-900">
-                        ₹{order.totalAmount.toLocaleString()}
+                        ${order.totalAmount.toLocaleString()}
                       </td>
                       <td className="px-6 py-4 text-zinc-500 text-xs">
                         {formatDate(order.createdAt)}
