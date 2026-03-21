@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import MainButton from "../component/MainButton";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -18,6 +19,7 @@ export const RevealLinks = () => {
 
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(1);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -57,7 +59,7 @@ export const RevealLinks = () => {
             Sports Time
           </FlipLink>
           <div className="flex justify-center mt-8">
-            <MainButton buttonName="Shop Now" />
+            <MainButton buttonName="Shop Now" onClick={() => navigate("/fashion")} />
           </div>
         </div>
       </section>

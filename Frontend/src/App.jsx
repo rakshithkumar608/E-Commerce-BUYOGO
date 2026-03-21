@@ -24,6 +24,7 @@ import Accessories from "./pages/Fashion/layout/Accessories";
 // Cart Section
 import Cart from "./cart/cart";
 import CheckoutPage from "./cart/CheckoutPage";
+import OrderConfirmation from "./cart/OrderConfirmation";
 import MyOrders from "./order/MyOrders";
 import AdminPage from "./admin/AdminPage";
 
@@ -91,6 +92,7 @@ const App = () => {
 
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/order-confirmation" element={<OrderConfirmation />} />
         <Route path="/admin" element={<AdminPage />} />
 
         {/* Fashion Section */}

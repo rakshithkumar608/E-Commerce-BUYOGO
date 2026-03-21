@@ -229,7 +229,7 @@ const MainStore = () => {
             </div>
 
             {/* Stats row */}
-            <div className="flex flex-wrap gap-8 pt-4">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-6 sm:gap-8 pt-4">
               {[
                 ["10K+", "Products"],
                 ["50+", "Brands"],

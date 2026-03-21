@@ -45,24 +45,7 @@ const AdminPage = () => {
     fetchData();
   }, []);
 
-  const handleBecomeAdmin = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/admin/make-admin", {
-        method: "PUT",
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (!res.ok) throw new Error("Failed");
-      toast.success("You are now an admin! Reloading...");
-      setTimeout(() => {
-        setLoading(true);
-        setNotAdmin(false);
-        fetchData();
-      }, 1000);
-    } catch {
-      toast.error("Failed to become admin. Make sure you are logged in.");
-    }
-  };
+
 
   const handleStatusChange = async (orderId, newStatus) => {
     try {
@@ -97,23 +80,23 @@ const AdminPage = () => {
     return (
       <div className="flex flex-col min-h-screen bg-zinc-50">
         <Navbar />
-        <div className="flex-1 flex items-center justify-center">
+        <div className="flex-1 flex items-center justify-center px-4">
           <div className="bg-white rounded-xl shadow-sm p-10 text-center max-w-md">
             <div className="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center">
               <svg className="w-8 h-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
               </svg>
             </div>
-            <h2 className="text-xl font-bold text-zinc-900 mb-2">Admin Access Required</h2>
+            <h2 className="text-xl font-bold text-zinc-900 mb-2">Access Denied</h2>
             <p className="text-zinc-500 text-sm mb-6">
-              You don't have admin privileges yet. Click below to become an admin.
+              You do not have admin privileges. Only authorized administrators can access this panel.
             </p>
-            <button
-              onClick={handleBecomeAdmin}
-              className="bg-black text-white px-6 py-2.5 rounded-lg font-medium hover:bg-zinc-800 transition"
+            <Link
+              to="/dashboard"
+              className="inline-block bg-black text-white px-6 py-2.5 rounded-lg font-medium hover:bg-zinc-800 transition"
             >
-              Become Admin
-            </button>
+              Back to Home
+            </Link>
           </div>
         </div>
         <Footer />

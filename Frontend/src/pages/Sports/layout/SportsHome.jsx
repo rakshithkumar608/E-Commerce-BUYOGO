@@ -85,7 +85,7 @@ const SportsHome = () => {
 
             {/* Stats row */}
             <div
-              className="divide-x-2 divide-black border-2 border-black inline-flex"
+              className="flex flex-col sm:flex-row sm:divide-x-2 divide-black border-2 border-black sm:inline-flex"
               style={{ boxShadow: "4px 4px 0px 0px #121212" }}
             >
               {[["200+", "Products"], ["15+", "Brands"], ["4.8★", "Rating"]].map(([val, label], i) => (
@@ -101,8 +101,8 @@ const SportsHome = () => {
             </div>
           </div>
 
-          {/* Right geometric composition */}
-          <div className="flex-1 flex items-center justify-center relative" style={{ minHeight: 400 }}>
+          {/* Right geometric composition - hidden on mobile */}
+          <div className="flex-1 items-center justify-center relative hidden lg:flex" style={{ minHeight: 400 }}>
             {/* Blue background panel */}
             <div
               className="absolute w-80 h-96"

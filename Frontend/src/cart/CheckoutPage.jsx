@@ -43,14 +43,20 @@ const CheckoutPage = () => {
     setPlacing(true);
     try {
       const shippingAddress = `${form.fullName}, ${form.address}, ${form.city}, ${form.state} ${form.zip}, Ph: ${form.phone}`;
-      await createOrder({
+      const result = await createOrder({
         shippingAddress,
         paymentMethod: form.paymentMethod,
       });
 
-      toast.success("Order placed successfully 🎉");
       dispatch(setCart([]));
-      navigate("/fashion/orders");
+      navigate("/order-confirmation", {
+        state: {
+          orderId: result?._id || result?.order?._id || "ORD" + Date.now(),
+          total,
+          paymentMethod: form.paymentMethod,
+          shippingAddress,
+        },
+      });
     } catch (error) {
       toast.error(error.message || "Checkout failed");
     } finally {

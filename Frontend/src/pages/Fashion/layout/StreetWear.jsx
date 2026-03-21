@@ -70,11 +70,11 @@ const StreetWear = () => {
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-          <h1 className="text-7xl text-white font-bold">Street Wear</h1>
+          <h1 className="text-3xl sm:text-5xl md:text-7xl text-white font-bold">Street Wear</h1>
         </div>
       </div>
       
-      <div className="flex gap-4 bg-white p-4 shadow rounded-xl">
+      <div className="flex flex-wrap gap-3 sm:gap-4 bg-white p-4 shadow rounded-xl">
         <select
           value={sort}
           onChange={(e) => setSort(e.target.value)}
@@ -90,7 +90,7 @@ const StreetWear = () => {
           placeholder="Min Price"
           value={minPrice}
           onChange={(e) => setMinPrice(e.target.value)}
-          className="border px-3 py-2 rounded w-32"
+          className="border px-3 py-2 rounded w-full sm:w-32"
         />
 
         <input
@@ -98,11 +98,11 @@ const StreetWear = () => {
           placeholder="Max Price"
           value={maxPrice}
           onChange={(e) => setMaxPrice(e.target.value)}
-          className="border px-3 py-2 rounded w-32"
+          className="border px-3 py-2 rounded w-full sm:w-32"
         />
       </div>
 
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filteredProducts.map((item) => (
           <div 
             key={item._id}

@@ -34,12 +34,12 @@ const Collections = () => {
         />
 
         <div className="absolute inset-0 bg-black/30 flex items-center">
-          <div className="max-w-6xl mx-auto px-10 text-white">
+          <div className="max-w-6xl mx-auto px-4 sm:px-10 text-white">
             <motion.h1
               variants={fadeUp}
               initial="hidden"
               animate="show"
-              className="text-6xl md:text-7xl font-semibold text-black/60 leading-tight tracking-wide"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-black/60 leading-tight tracking-wide"
             >
               The Fall <br /> Collection
             </motion.h1>
@@ -73,7 +73,7 @@ const Collections = () => {
       </section>
 
     
-      <section className="max-w-6xl mx-auto px-10 py-28 grid md:grid-cols-2 gap-16 items-center">
+      <section className="max-w-6xl mx-auto px-4 sm:px-10 py-16 sm:py-28 grid md:grid-cols-2 gap-10 sm:gap-16 items-center">
 
         <motion.h2
           variants={fadeUp}
@@ -102,7 +102,7 @@ const Collections = () => {
       </section>
 
      
-      <section className="max-w-6xl mx-auto px-10 pb-32 grid md:grid-cols-3 gap-14">
+      <section className="max-w-6xl mx-auto px-4 sm:px-10 pb-20 sm:pb-32 grid sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-14">
 
         {[{
           title: "Women",

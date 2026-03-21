@@ -1,5 +1,5 @@
 import React from 'react';
-import TextType from "../../../component/TextType";
+import { Link } from 'react-router-dom';
 import nike from "../../../assets/images/logos/nike.png";
 import adidas from "../../../assets/images/logos/adidas.png";
 import zara from "../../../assets/images/logos/zara.png";
@@ -11,134 +11,99 @@ import apple from "../../../assets/images/logos/apple.png";
 import samsung from "../../../assets/images/logos/samsung.png";
 import sony from "../../../assets/images/logos/sony.png";
 
-const floatingBrands = [
-  
-  { id: 1, name: 'NIKE', logo: {src: nike}, top: '8%', left: '8%', delay: '0s', duration: '7s', size: 90, navigator: true, navigatorLink: '/fashion/men' },
-  { id: 2, name: 'ADIDAS', logo: {src: adidas}, top: '12%', left: '75%', delay: '1.2s', duration: '8s', size: 80, navigator: true, navigatorLink: '/fashion/adidas' },
-  { id: 3, name: 'ZARA', logo: {src: zara}, top: '38%', left: '4%', delay: '0.6s', duration: '6.5s', size: 95, navigator: true, navigatorLink: '/fashion/zara' },
-  { id: 4, name: 'H&M', logo: {src: hm}, top: '70%', left: '10%', delay: '1.8s', duration: '7.5s', size: 82, navigator: true, navigatorLink: '/fashion/hm' },
-  { id: 5, name: 'GUCCI', logo: {src: gucci}, top: '82%', left: '42%', delay: '2.4s', duration: '8.5s', size: 88, navigator: true, navigatorLink: '/fashion/gucci' },
-  { id: 6, name: 'PUMA', logo: {src: puma}, top: '5%', left: '42%', delay: '0.4s', duration: '6.8s', size: 78, navigator: true, navigatorLink: '/fashion/puma' },
-  { id: 7, name: "LEVI'S", logo: {src: levi}, top: '60%', left: '22%', delay: '2s', duration: '7.2s', size: 80, navigator: true, navigatorLink: '/fashion/levi' },
-
-  // Gadget Brands
-  { id: 8, name: 'APPLE', logo: {src: apple}, top: '30%', left: '82%', delay: '0.8s', duration: '9s', size: 92, navigator: true, navigatorLink: '/fashion/apple' },
-  { id: 9, name: 'SAMSUNG', logo: {src: samsung}, top: '72%', left: '75%', delay: '1.5s', duration: '6.2s', size: 84 },
-  { id: 10, name: 'SONY', logo: {src: sony}, top: '55%', left: '65%', delay: '0.3s', duration: '7.8s', size: 78 },
+const brands = [
+  { name: "Nike", logo: nike, link: "/fashion/men", tag: "Fashion", color: "#111" },
+  { name: "Adidas", logo: adidas, link: "/fashion/men", tag: "Fashion", color: "#1a1a2e" },
+  { name: "Zara", logo: zara, link: "/fashion/women", tag: "Fashion", color: "#2d3436" },
+  { name: "H&M", logo: hm, link: "/fashion/women", tag: "Fashion", color: "#0c3547" },
+  { name: "Gucci", logo: gucci, link: "/fashion/accessories", tag: "Luxury", color: "#1a1a2e" },
+  { name: "Puma", logo: puma, link: "/fashion/streetwear", tag: "Sports", color: "#111" },
+  { name: "Levi's", logo: levi, link: "/fashion/men", tag: "Denim", color: "#2d3436" },
+  { name: "Apple", logo: apple, link: "/electronics/smartphones", tag: "Tech", color: "#0c3547" },
+  { name: "Samsung", logo: samsung, link: "/electronics/smartphones", tag: "Tech", color: "#1a1a2e" },
+  { name: "Sony", logo: sony, link: "/electronics/headphones", tag: "Audio", color: "#111" },
 ];
-
-
-const customStyles = `
-  @keyframes brand-drift {
-    0%   { transform: translateY(0px) translateX(0px) scale(1); }
-    25%  { transform: translateY(-14px) translateX(8px) scale(1.02); }
-    50%  { transform: translateY(-6px) translateX(-10px) scale(0.98); }
-    75%  { transform: translateY(10px) translateX(6px) scale(1.01); }
-    100% { transform: translateY(0px) translateX(0px) scale(1); }
-  }
-
-  .brand-float {
-    animation: brand-drift var(--dur) ease-in-out infinite;
-    animation-delay: var(--del);
-  }
-
-  .brand-float:hover {
-    animation-play-state: paused;
-    z-index: 50;
-  }
-`;
-
 
 const NewBrands = () => {
   return (
-    <>
-      <style>{customStyles}</style>
+    <div className="min-h-screen py-12 sm:py-16 px-4 sm:px-6 lg:px-8" style={{ background: "linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%)" }}>
+      <div className="max-w-6xl mx-auto">
 
-      <div
-        className="relative overflow-hidden flex items-center justify-center min-h-screen w-full  rounded-xl shadow-2xl drop-shadow-2xl transition-all duration-300 ease-in-out hover:scale-90"
-        
-      >
+        {/* Header */}
+        <div className="text-center mb-12 sm:mb-16">
+          <span className="inline-block text-xs font-bold uppercase tracking-[0.25em] text-white bg-black px-4 py-1.5 rounded-full mb-6">
+            Coming Soon
+          </span>
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 leading-tight">
+            New Brands
+          </h1>
+          <p className="mt-4 text-base sm:text-lg text-gray-500 max-w-xl mx-auto font-medium">
+            Explore our curated selection of premium brands across fashion, tech, and lifestyle.
+          </p>
+          <div className="mt-6 mx-auto w-16 h-1 bg-black rounded-full" />
+        </div>
 
-        {/* Subtle grid overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: '60px 60px',
-          }}
-        />
-
-        {/* Floating Brand Logos */}
-        <div className="absolute inset-0 z-0">
-          {floatingBrands.map((brand) => (
-            <div
-              key={brand.id}
-              className="absolute brand-float"
-              style={{
-                top: brand.top,
-                left: brand.left,
-                '--dur': brand.duration,
-                '--del': brand.delay,
-              }}
+        {/* Brands Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+          {brands.map((brand) => (
+            <Link
+              key={brand.name}
+              to={brand.link}
+              className="group relative bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 flex flex-col items-center justify-center gap-4 hover:shadow-xl hover:border-gray-300 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
             >
-              <div className="group relative cursor-pointer transition-all duration-300 ease-out hover:scale-110">
-                {/* White circular logo container */}
-                <div
-                  className="rounded-full bg-white flex items-center justify-center 
-                    shadow-lg group-hover:shadow-2xl group-hover:shadow-white/20
-                    transition-all duration-300 overflow-hidden p-4"
-                  style={{
-                    width: brand.size,
-                    height: brand.size,
-                  }}
-                >
-                  <img
-                    src={brand.logo.src}
-                    alt={`${brand.name} logo`}
-                    className="w-full h-full object-contain"
-                    loading="lazy"
-                  />
-                </div>
+              {/* Hover background glow */}
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-2xl"
+                style={{ background: brand.color }}
+              />
 
-                {/* Brand name tooltip */}
-                <div className="absolute left-1/2 -translate-x-1/2 -bottom-9 opacity-0 group-hover:opacity-100 
-                  transition-all duration-300 group-hover:-bottom-8 pointer-events-none">
-                  <span className="bg-white text-gray-900 text-[11px] font-bold tracking-widest px-3 py-1.5 
-                    rounded-full whitespace-nowrap shadow-lg">
-                    {brand.name}
-                  </span>
-                </div>
+              {/* Tag */}
+              <span className="absolute top-3 right-3 text-[9px] font-bold uppercase tracking-widest text-gray-400 group-hover:text-gray-600 transition-colors">
+                {brand.tag}
+              </span>
+
+              {/* Logo */}
+              <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center relative z-10">
+                <img
+                  src={brand.logo}
+                  alt={`${brand.name} logo`}
+                  className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                  loading="lazy"
+                />
               </div>
-            </div>
+
+              {/* Name */}
+              <span className="text-sm sm:text-base font-bold text-gray-900 tracking-tight relative z-10">
+                {brand.name}
+              </span>
+
+              {/* Arrow indicator */}
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:bottom-4 transition-all duration-300">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </div>
+            </Link>
           ))}
         </div>
 
-        {/* Center Typing Text */}
-        <div className="relative z-10 w-full max-w-5xl px-6 flex justify-center pointer-events-none">
-          <TextType
-            text="New Brands Coming Soon 🌟 Pick Your Favorites"
-            typingSpeed={50}
-            deletingSpeed={30}
-            pauseDuration={2000}
-            loop={true}
-            showCursor
-            cursorCharacter="|"
-            cursorClassName="text-yellow-500"
-            className="text-5xl md:text-7xl font-extrabold tracking-tight 
-          bg-gradient-to-r 
-          from-[#0F766E] 
-          via-[#15803D] 
-          to-[#E11D48] 
-          bg-clip-text 
-          text-transparent"
-          />
+        {/* Bottom CTA */}
+        <div className="text-center mt-12 sm:mt-16">
+          <p className="text-sm text-gray-400 font-medium mb-4">
+            More brands arriving every season
+          </p>
+          <Link
+            to="/store"
+            className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-gray-800 transition-colors shadow-lg shadow-gray-300"
+          >
+            Visit Store
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </Link>
         </div>
-
       </div>
-    </>
+    </div>
   );
 };
 
