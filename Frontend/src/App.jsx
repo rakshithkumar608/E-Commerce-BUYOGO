@@ -46,6 +46,16 @@ import AccessoriesSection from "./pages/Store/layout/AccessoriesSection";
 import ElectronicsSection from "./pages/Store/layout/ElectronicsSection";
 import DealsSection from "./pages/Store/layout/DealsSection";
 
+// Sports
+import SportsLayout from "./pages/Sports/layout/SportsLayout";
+import SportsHome from "./pages/Sports/layout/SportsHome";
+import RunningSection from "./pages/Sports/layout/RunningSection";
+import GymSection from "./pages/Sports/layout/GymSection";
+import OutdoorSection from "./pages/Sports/layout/OutdoorSection";
+import TeamSportsSection from "./pages/Sports/layout/TeamSportsSection";
+import YogaSection from "./pages/Sports/layout/YogaSection";
+import SportsDeals from "./pages/Sports/layout/SportsDeals";
+
 
 const App = () => {
   useEffect(() => {
@@ -117,6 +127,17 @@ const App = () => {
           <Route path="accessories" element={<AccessoriesSection />} />
           <Route path="electronics" element={<ElectronicsSection />} />
           <Route path="deals" element={<DealsSection />} />
+        </Route>
+
+        {/* Sports Section */}
+        <Route path="/sports" element={<SportsLayout />}>
+          <Route index element={<SportsHome />} />
+          <Route path="running" element={<RunningSection />} />
+          <Route path="gym" element={<GymSection />} />
+          <Route path="outdoor" element={<OutdoorSection />} />
+          <Route path="team-sports" element={<TeamSportsSection />} />
+          <Route path="yoga" element={<YogaSection />} />
+          <Route path="deals" element={<SportsDeals />} />
         </Route>
 
       </Routes>

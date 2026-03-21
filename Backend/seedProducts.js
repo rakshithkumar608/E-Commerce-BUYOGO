@@ -808,6 +808,66 @@ const camera = [
 
 ]
 
+// ── Sports: Running ────────────────────────────────────────
+const runningProducts = [
+  { name: "Nike Air Zoom Pegasus 41", description: "Responsive cushioning for everyday running.", price: 129.99, image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600", category: "running", brand: "Nike", stock: 40, averageRating: 4.7 },
+  { name: "Adidas Ultraboost Light", description: "Energy-returning boost for long-distance runs.", price: 189.99, image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=600", category: "running", brand: "Adidas", stock: 30, averageRating: 4.8 },
+  { name: "ASICS Gel-Kayano 30", description: "Stability shoe with gel cushioning technology.", price: 159.99, image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600", category: "running", brand: "ASICS", stock: 25, averageRating: 4.5 },
+  { name: "Running Compression Shorts", description: "Moisture-wicking fabric with inner brief.", price: 39.99, image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600", category: "running", brand: "Under Armour", stock: 60, averageRating: 4.3 },
+  { name: "GPS Running Watch", description: "Track distance, pace, and heart rate.", price: 249.99, image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600", category: "running", brand: "Garmin", stock: 20, averageRating: 4.6 },
+  { name: "Hydration Running Vest", description: "Lightweight vest with 2L water bladder.", price: 79.99, image: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600", category: "running", brand: "Salomon", stock: 35, averageRating: 4.4 },
+  { name: "Reflective Running Jacket", description: "High-visibility windbreaker for night runs.", price: 89.99, image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600", category: "running", brand: "Nike", stock: 28, averageRating: 4.2 },
+  { name: "Pro Running Socks (3-Pack)", description: "Cushioned anti-blister socks for runners.", price: 19.99, image: "https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?w=600", category: "running", brand: "Balega", stock: 100, averageRating: 4.5 },
+];
+
+// ── Sports: Gym & Fitness ──────────────────────────────────
+const gymProducts = [
+  { name: "Adjustable Dumbbell Set", description: "5-52.5 lbs adjustable with quick-change dial.", price: 349.99, image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600", category: "gym", brand: "Bowflex", stock: 15, averageRating: 4.7 },
+  { name: "Premium Gym Gloves", description: "Full palm protection with wrist support.", price: 29.99, image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600", category: "gym", brand: "RDX", stock: 50, averageRating: 4.3 },
+  { name: "Resistance Bands Set", description: "5 levels of resistance for full-body workout.", price: 24.99, image: "https://images.unsplash.com/photo-1598289431512-b97b0917affc?w=600", category: "gym", brand: "Fit Simplify", stock: 80, averageRating: 4.5 },
+  { name: "Protein Shaker Bottle", description: "Leak-proof 28oz shaker with mixing ball.", price: 14.99, image: "https://images.unsplash.com/photo-1593095948071-474c5cc2c1cf?w=600", category: "gym", brand: "BlenderBottle", stock: 100, averageRating: 4.4 },
+  { name: "Foam Roller Recovery", description: "High-density foam for deep tissue massage.", price: 34.99, image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600", category: "gym", brand: "TriggerPoint", stock: 45, averageRating: 4.6 },
+  { name: "Weight Lifting Belt", description: "Genuine leather 4-inch powerlifting belt.", price: 59.99, image: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600", category: "gym", brand: "Rogue", stock: 30, averageRating: 4.8 },
+  { name: "Jump Rope - Speed Pro", description: "Ball-bearing handles for fast rotations.", price: 19.99, image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600", category: "gym", brand: "CrossRope", stock: 55, averageRating: 4.3 },
+  { name: "Gym Duffle Bag", description: "Water-resistant bag with shoe compartment.", price: 44.99, image: "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=600", category: "gym", brand: "Under Armour", stock: 40, averageRating: 4.2 },
+];
+
+// ── Sports: Outdoor / Hiking ───────────────────────────────
+const outdoorProducts = [
+  { name: "Trail Hiking Boots", description: "Waterproof leather boots with Vibram sole.", price: 179.99, image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600", category: "outdoor", brand: "Merrell", stock: 25, averageRating: 4.7 },
+  { name: "66L Trekking Backpack", description: "Adjustable frame pack for multi-day hikes.", price: 199.99, image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600", category: "outdoor", brand: "Osprey", stock: 20, averageRating: 4.8 },
+  { name: "Ultralight Tent (2P)", description: "3-season tent weighing under 3 lbs.", price: 299.99, image: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600", category: "outdoor", brand: "MSR", stock: 15, averageRating: 4.6 },
+  { name: "Insulated Water Bottle", description: "32oz vacuum-insulated stainless steel.", price: 34.99, image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600", category: "outdoor", brand: "Hydro Flask", stock: 70, averageRating: 4.5 },
+  { name: "Trekking Poles (Pair)", description: "Carbon fiber adjustable poles with cork grip.", price: 89.99, image: "https://images.unsplash.com/photo-1551632811-561732d1e306?w=600", category: "outdoor", brand: "Black Diamond", stock: 30, averageRating: 4.4 },
+  { name: "Climbing Harness", description: "Lightweight sport climbing harness.", price: 69.99, image: "https://images.unsplash.com/photo-1522163182402-834f871fd851?w=600", category: "outdoor", brand: "Petzl", stock: 22, averageRating: 4.5 },
+  { name: "LED Headlamp 600LM", description: "Rechargeable, water-resistant headlamp.", price: 39.99, image: "https://images.unsplash.com/photo-1510312305653-8ed496efae75?w=600", category: "outdoor", brand: "Black Diamond", stock: 55, averageRating: 4.6 },
+  { name: "Quick-Dry Cargo Pants", description: "Convertible hiking pants with UV protection.", price: 54.99, image: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=600", category: "outdoor", brand: "Columbia", stock: 40, averageRating: 4.3 },
+];
+
+// ── Sports: Team Sports ────────────────────────────────────
+const teamSportsProducts = [
+  { name: "Official Match Football", description: "FIFA-approved thermal-bonded match ball.", price: 49.99, image: "https://images.unsplash.com/photo-1552667466-07770ae110d0?w=600", category: "teamSports", brand: "Adidas", stock: 45, averageRating: 4.5 },
+  { name: "Basketball - Pro Grip", description: "Indoor/outdoor composite leather ball.", price: 39.99, image: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600", category: "teamSports", brand: "Wilson", stock: 50, averageRating: 4.4 },
+  { name: "Football Cleats Pro", description: "Firm ground cleats with ankle support.", price: 129.99, image: "https://images.unsplash.com/photo-1511886929837-354d827aae26?w=600", category: "teamSports", brand: "Nike", stock: 30, averageRating: 4.6 },
+  { name: "Goalkeeper Gloves", description: "Latex foam grip with finger protection.", price: 34.99, image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600", category: "teamSports", brand: "Adidas", stock: 35, averageRating: 4.3 },
+  { name: "Shin Guards - Elite", description: "Lightweight EVA foam with hard shell.", price: 24.99, image: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600", category: "teamSports", brand: "Nike", stock: 60, averageRating: 4.2 },
+  { name: "Basketball Jersey", description: "Breathable mesh jersey, team colors.", price: 44.99, image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600", category: "teamSports", brand: "Nike", stock: 40, averageRating: 4.4 },
+  { name: "Training Cones (20pk)", description: "Durable disc cones for agility drills.", price: 12.99, image: "https://images.unsplash.com/photo-1461896836934-bd45ba48fa0f?w=600", category: "teamSports", brand: "SKLZ", stock: 80, averageRating: 4.1 },
+  { name: "Sports Duffle Bag XL", description: "Extra large team bag with ventilated pockets.", price: 54.99, image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600", category: "teamSports", brand: "Under Armour", stock: 35, averageRating: 4.3 },
+];
+
+// ── Sports: Yoga & Wellness ────────────────────────────────
+const yogaProducts = [
+  { name: "Premium Yoga Mat 6mm", description: "Non-slip TPE mat with alignment lines.", price: 49.99, image: "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=600", category: "yoga", brand: "Manduka", stock: 50, averageRating: 4.7 },
+  { name: "Yoga Block Set (2)", description: "High-density foam blocks for support.", price: 19.99, image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600", category: "yoga", brand: "Gaiam", stock: 70, averageRating: 4.5 },
+  { name: "Yoga Strap - Cotton", description: "8-foot adjustable D-ring yoga strap.", price: 12.99, image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600", category: "yoga", brand: "Manduka", stock: 80, averageRating: 4.3 },
+  { name: "High-Waist Yoga Leggings", description: "4-way stretch with hidden pocket.", price: 59.99, image: "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=600", category: "yoga", brand: "Lululemon", stock: 45, averageRating: 4.8 },
+  { name: "Meditation Cushion", description: "Buckwheat-filled zafu meditation pillow.", price: 39.99, image: "https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?w=600", category: "yoga", brand: "Gaiam", stock: 30, averageRating: 4.4 },
+  { name: "Yoga Wheel", description: "Dharma wheel for backbends and stretching.", price: 34.99, image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600", category: "yoga", brand: "UpCircleSeven", stock: 35, averageRating: 4.3 },
+  { name: "Essential Oil Diffuser", description: "Ultrasonic aromatherapy for yoga sessions.", price: 29.99, image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600", category: "yoga", brand: "URPOWER", stock: 55, averageRating: 4.2 },
+  { name: "Yoga Mat Bag", description: "Full-zip carry bag with adjustable strap.", price: 24.99, image: "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=600", category: "yoga", brand: "Manduka", stock: 40, averageRating: 4.4 },
+];
+
 const seedProducts = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
@@ -824,6 +884,11 @@ const seedProducts = async () => {
       ...laptop,
       ...headPhones,
       ...camera,
+      ...runningProducts,
+      ...gymProducts,
+      ...outdoorProducts,
+      ...teamSportsProducts,
+      ...yogaProducts,
     ]);
     console.log(`✅ Seeded ${created.length} products successfully!`);
 
@@ -839,3 +904,4 @@ const seedProducts = async () => {
 };
 
 seedProducts();
+
