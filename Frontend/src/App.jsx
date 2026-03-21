@@ -36,6 +36,16 @@ import Laptops from "./pages/Electronics/layout/Laptops";
 import Headphones from "./pages/Electronics/layout/Headphones";
 import CameraSection from "./pages/Electronics/layout/CameraSection";
 
+// Store
+import StoreLayout from "./pages/Store/layout/StoreLayout";
+import MainStore from "./pages/Store/layout/MainStore";
+import MenSection from "./pages/Store/layout/MenSection";
+import WomenSection from "./pages/Store/layout/WomenSection";
+import StreetWearSection from "./pages/Store/layout/StreetWearSection";
+import AccessoriesSection from "./pages/Store/layout/AccessoriesSection";
+import ElectronicsSection from "./pages/Store/layout/ElectronicsSection";
+import DealsSection from "./pages/Store/layout/DealsSection";
+
 
 const App = () => {
   useEffect(() => {
@@ -97,9 +107,17 @@ const App = () => {
         <Route path="headphones" element={<Headphones />}/>
         <Route path="cameras" element={<CameraSection/>}/>
         </Route>
-        
 
-        
+        {/* Store Section */}
+        <Route path="/store" element={<StoreLayout />}>
+          <Route index element={<MainStore />} />
+          <Route path="men" element={<MenSection />} />
+          <Route path="women" element={<WomenSection />} />
+          <Route path="streetwear" element={<StreetWearSection />} />
+          <Route path="accessories" element={<AccessoriesSection />} />
+          <Route path="electronics" element={<ElectronicsSection />} />
+          <Route path="deals" element={<DealsSection />} />
+        </Route>
 
       </Routes>
     </BrowserRouter>
