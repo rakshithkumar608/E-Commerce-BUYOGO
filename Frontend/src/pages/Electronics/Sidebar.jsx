@@ -27,29 +27,26 @@ const Sidebar = () => {
 
   const linkStyle = ({ isActive }) =>
     `flex items-center gap-3 px-4 py-4 rounded-xl font-mono text-xs font-bold tracking-widest uppercase transition-all duration-250 ${
-      isActive
-        ? "sidebar-link-active"
-        : "sidebar-link"
+      isActive ? "sidebar-link-active" : "sidebar-link"
     }`;
 
   return (
     <>
-      {/* Sidebar-specific styles (not duplicating global theme) */}
+      {/* Sidebar-specific styles for dark theme */}
       <style>{`
         .sidebar-link {
           position: relative;
-          color: var(--text-muted);
+          color: var(--elec-text-muted);
           transition: all 250ms ease;
         }
         .sidebar-link:hover {
-          background: linear-gradient(145deg, #e8edf5, #d1d9e6);
-          box-shadow: var(--shadow-card);
+          background: rgba(255,255,255,0.04);
           transform: translateX(4px);
-          color: var(--text-primary);
+          color: var(--elec-text);
         }
         .sidebar-link-active {
-          background: linear-gradient(145deg, #e8edf5, #d1d9e6);
-          box-shadow: var(--shadow-recessed);
+          background: rgba(0,210,255,0.08);
+          border: 1px solid rgba(0,210,255,0.15);
           color: var(--accent-cyan) !important;
           transform: translateX(6px) scale(1.02);
           position: relative;
@@ -68,41 +65,50 @@ const Sidebar = () => {
           height: 60%;
           border-radius: 3px;
           background: linear-gradient(180deg, var(--accent-cyan), #00a8ff);
-          box-shadow: 0 0 8px var(--accent-cyan);
+          box-shadow: 0 0 10px var(--accent-cyan);
           animation: sidebar-glow 1.5s infinite alternate;
         }
         @keyframes sidebar-glow {
           from { box-shadow: 0 0 4px var(--accent-cyan); }
-          to   { box-shadow: 0 0 12px var(--accent-cyan); }
+          to   { box-shadow: 0 0 14px var(--accent-cyan); }
         }
       `}</style>
 
       {/* Mobile menu button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="md:hidden fixed top-6 left-6 z-40 w-12 h-12 flex items-center justify-center industrial-panel"
+        className="md:hidden fixed top-20 left-4 z-40 w-11 h-11 flex items-center justify-center rounded-xl"
+        style={{
+          background: 'var(--elec-card)',
+          border: '1px solid var(--elec-border)',
+          color: 'var(--elec-text)',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.4)',
+        }}
       >
-        <Menu size={24} />
+        <Menu size={22} />
       </button>
 
       {/* Overlay */}
       {isOpen && (
         <div
-          className="md:hidden fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
+          className="md:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
           onClick={() => setIsOpen(false)}
         />
       )}
 
       {/* Sidebar */}
       <aside
-        className={`fixed md:static inset-y-0 left-0 z-50 h-screen w-72 industrial-bg border-r p-6 flex flex-col justify-between transform transition-transform duration-500 ${
+        className={`fixed md:static inset-y-0 left-0 z-50 h-screen w-64 md:w-72 p-5 md:p-6 flex flex-col justify-between transform transition-transform duration-500 ${
           isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
         }`}
-        style={{ borderColor: '#babecc' }}
+        style={{
+          background: 'var(--elec-surface)',
+          borderRight: '1px solid var(--elec-border)',
+        }}
       >
         <div>
           {/* Logo */}
-          <div className="flex items-center justify-between mb-12 px-2">
+          <div className="flex items-center justify-between mb-10 md:mb-12 px-2">
             <div className="flex items-center gap-2">
               <span
                 className="led animate-led-pulse"
@@ -111,21 +117,28 @@ const Sidebar = () => {
                   color: 'var(--accent-cyan)',
                 }}
               />
-              <span className="font-extrabold text-xl tracking-tight uppercase">
+              <span
+                className="font-extrabold text-lg md:text-xl tracking-tight uppercase"
+                style={{ color: 'var(--elec-text)' }}
+              >
                 Electronics
               </span>
             </div>
 
             <button
               onClick={() => setIsOpen(false)}
-              className="md:hidden w-8 h-8 flex items-center justify-center rounded-lg shadow-inner"
+              className="md:hidden w-8 h-8 flex items-center justify-center rounded-lg"
+              style={{
+                background: 'rgba(255,255,255,0.05)',
+                color: 'var(--elec-text-muted)',
+              }}
             >
               <X size={18} />
             </button>
           </div>
 
           {/* Navigation */}
-          <nav className="space-y-4">
+          <nav className="space-y-3 md:space-y-4">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
@@ -144,17 +157,20 @@ const Sidebar = () => {
         </div>
 
         {/* Bottom buttons */}
-        <div className="space-y-4 border-t pt-8" style={{ borderColor: '#babecc' }}>
+        <div
+          className="space-y-3 md:space-y-4 border-t pt-6 md:pt-8"
+          style={{ borderColor: 'var(--elec-border)' }}
+        >
           <button
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg font-mono text-xs font-bold uppercase hover:shadow-md transition-all"
-            style={{ color: 'var(--text-muted)' }}
+            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg font-mono text-xs font-bold uppercase hover:bg-white/5 transition-all"
+            style={{ color: 'var(--elec-text-muted)' }}
           >
             <Settings size={16} />
             Settings
           </button>
 
           <button
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg font-mono text-xs font-bold uppercase hover:shadow-inner transition-all"
+            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg font-mono text-xs font-bold uppercase hover:bg-red-500/10 transition-all"
             style={{ color: 'var(--accent-red)' }}
           >
             <LogOut size={16} />
