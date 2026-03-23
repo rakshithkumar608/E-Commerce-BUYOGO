@@ -74,149 +74,228 @@ const Register = () => {
 
   return (
     <>
-      {/* Inline styles for this page */}
+  
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Calistoga&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        
+        /* Signature gradient text */
         .auth-gradient-text {
-          background: linear-gradient(to right, #F7931A, #FFD600);
+          background: linear-gradient(to right, #0052FF, #4D7CFF);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
+        
+        /* Modern input styling */
         .auth-input {
-          background: rgba(15,17,21,0.8);
-          border: 1px solid rgba(255,255,255,0.08);
-          color: #fff;
+          background: #FFFFFF;
+          border: 1px solid #E2E8F0;
+          color: #0F172A;
           font-family: 'Inter', sans-serif;
-          font-size: 14px;
+          font-size: 15px;
           height: 52px;
           padding: 0 16px 0 48px;
           outline: none;
-          transition: all 0.3s ease;
-          border-radius: 14px;
+          transition: all 0.2s ease-out;
+          border-radius: 12px;
           width: 100%;
         }
-        .auth-input::placeholder { color: rgba(255,255,255,0.25); }
+        .auth-input::placeholder { 
+          color: #64748B;
+          opacity: 0.5;
+        }
         .auth-input:focus {
-          border-color: rgba(247,147,26,0.5);
-          box-shadow: 0 0 0 3px rgba(247,147,26,0.1), 0 8px 24px -8px rgba(247,147,26,0.15);
+          border-color: #0052FF;
+          box-shadow: 0 0 0 3px rgba(0, 82, 255, 0.1);
         }
-        .auth-grid-bg {
-          background-size: 48px 48px;
-          background-image:
-            linear-gradient(to right, rgba(30,41,59,0.4) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(30,41,59,0.4) 1px, transparent 1px);
-          mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
-        }
+        
+        /* Floating animation */
         @keyframes auth-float {
           0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-12px); }
+          50% { transform: translateY(-10px); }
         }
+        
+        /* Entrance animation */
         @keyframes auth-entrance {
-          from { opacity: 0; transform: translateY(20px); }
+          from { opacity: 0; transform: translateY(28px); }
           to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Pulsing dot animation */
+        @keyframes auth-pulse {
+          0%, 100% { transform: scale(1); opacity: 1; }
+          50% { transform: scale(1.3); opacity: 0.7; }
+        }
+        
+        /* Rotating ring */
+        @keyframes auth-rotate {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
         }
       `}</style>
 
       <div
-        className="min-h-screen flex items-center justify-center px-4 py-8 relative overflow-hidden"
+        className="min-h-screen flex items-center justify-center px-4 py-12 relative overflow-hidden"
         style={{
-          background: '#030304',
+          background: '#FAFAFA',
           fontFamily: "'Inter', sans-serif",
         }}
       >
-        {/* Background elements */}
-        <div className="absolute inset-0 auth-grid-bg opacity-60" />
+        
         <div
           className="absolute rounded-full pointer-events-none"
           style={{
-            width: 500, height: 500,
-            top: '-15%', left: '-10%',
-            background: '#EA580C',
-            opacity: 0.06,
-            filter: 'blur(100px)',
+            width: 600, 
+            height: 600,
+            top: '-20%', 
+            left: '-15%',
+            background: 'radial-gradient(circle, rgba(0, 82, 255, 0.08) 0%, rgba(77, 124, 255, 0.04) 50%, transparent 70%)',
+            filter: 'blur(60px)',
           }}
         />
+        
+       
         <div
           className="absolute rounded-full pointer-events-none"
           style={{
-            width: 400, height: 400,
-            bottom: '-10%', right: '-10%',
-            background: '#F7931A',
-            opacity: 0.05,
-            filter: 'blur(100px)',
+            width: 500, 
+            height: 500,
+            bottom: '-15%', 
+            right: '-12%',
+            background: 'radial-gradient(circle, rgba(77, 124, 255, 0.06) 0%, transparent 60%)',
+            filter: 'blur(80px)',
           }}
         />
 
-        {/* Main card */}
+     
+        <div
+          className="absolute pointer-events-none hidden sm:block"
+          style={{
+            width: 200,
+            height: 200,
+            top: '10%',
+            right: '8%',
+            border: '2px dashed rgba(0, 82, 255, 0.15)',
+            borderRadius: '50%',
+            animation: 'auth-rotate 60s linear infinite',
+          }}
+        />
+
+        {/* Main card container */}
         <div
           className="relative w-full max-w-md z-10"
-          style={{ animation: 'auth-entrance 0.6s ease-out both' }}
+          style={{ animation: 'auth-entrance 0.7s ease-out both' }}
         >
           <div
-            className="rounded-2xl p-6 sm:p-8"
+            className="rounded-2xl p-8 sm:p-10 relative"
             style={{
-              background: 'rgba(15,17,21,0.7)',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)',
-              border: '1px solid rgba(255,255,255,0.06)',
-              boxShadow: '0 24px 48px rgba(0,0,0,0.4)',
+              background: '#FFFFFF',
+              border: '1px solid #E2E8F0',
+              boxShadow: '0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04)',
             }}
           >
-            {/* Corner decorations */}
-            <div className="absolute top-3 left-3 w-4 h-4 border-t border-l pointer-events-none" style={{ borderColor: 'rgba(247,147,26,0.3)' }} />
-            <div className="absolute top-3 right-3 w-4 h-4 border-t border-r pointer-events-none" style={{ borderColor: 'rgba(247,147,26,0.3)' }} />
-            <div className="absolute bottom-3 left-3 w-4 h-4 border-b border-l pointer-events-none" style={{ borderColor: 'rgba(247,147,26,0.3)' }} />
-            <div className="absolute bottom-3 right-3 w-4 h-4 border-b border-r pointer-events-none" style={{ borderColor: 'rgba(247,147,26,0.3)' }} />
+          
+            <div 
+              className="absolute inset-0 rounded-2xl pointer-events-none transition-opacity duration-300 opacity-0 hover:opacity-100"
+              style={{
+                background: 'linear-gradient(to bottom right, rgba(0, 82, 255, 0.02), transparent)',
+              }}
+            />
 
-            {/* Lottie + badge */}
-            <div className="flex flex-col items-center mb-6">
-              <div className="w-20 sm:w-24 mb-3" style={{ animation: 'auth-float 6s ease-in-out infinite' }}>
-                <Lottie animationData={animationData} loop />
+            {/* Lottie animation + header */}
+            <div className="flex flex-col items-center mb-8">
+              {/* Animated Lottie with accent background */}
+              <div 
+                className="relative mb-6"
+                style={{ animation: 'auth-float 5s ease-in-out infinite' }}
+              >
+                <div
+                  className="absolute inset-0 rounded-2xl"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(0, 82, 255, 0.08), rgba(77, 124, 255, 0.08))',
+                    filter: 'blur(20px)',
+                    transform: 'scale(1.1)',
+                  }}
+                />
+                <div 
+                  className="relative w-24 sm:w-28 p-4 rounded-2xl"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(0, 82, 255, 0.06), rgba(77, 124, 255, 0.06))',
+                  }}
+                >
+                  <Lottie animationData={animationData} loop />
+                </div>
               </div>
 
+              {/* Section badge */}
               <div
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-[0.15em] mb-4"
+                className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full mb-4"
                 style={{
-                  background: 'rgba(247,147,26,0.1)',
-                  border: '1px solid rgba(247,147,26,0.25)',
-                  color: '#F7931A',
-                  fontFamily: "'JetBrains Mono', monospace",
+                  background: 'rgba(0, 82, 255, 0.05)',
+                  border: '1px solid rgba(0, 82, 255, 0.2)',
                 }}
               >
-                <Zap size={10} fill="currentColor" />
-                Join BUYOGO
+                <span 
+                  className="h-2 w-2 rounded-full"
+                  style={{
+                    background: '#0052FF',
+                    animation: 'auth-pulse 2s ease-in-out infinite',
+                  }}
+                />
+                <span
+                  className="font-mono text-xs uppercase tracking-[0.15em]"
+                  style={{ 
+                    color: '#0052FF',
+                    fontWeight: 500,
+                  }}
+                >
+                  Join BUYOGO
+                </span>
               </div>
 
+              {/* Headline with gradient accent */}
               <h1
-                className="text-2xl sm:text-3xl font-bold text-white text-center"
-                style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '-0.02em' }}
+                className="text-3xl sm:text-4xl font-normal text-center mb-2"
+                style={{ 
+                  fontFamily: "'Calistoga', Georgia, serif",
+                  color: '#0F172A',
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.2,
+                }}
               >
                 Create <span className="auth-gradient-text">Account</span>
               </h1>
+              
+              {/* Subtitle */}
               <p
-                className="text-xs mt-2 text-center"
-                style={{ color: 'rgba(255,255,255,0.4)', fontFamily: "'JetBrains Mono', monospace" }}
+                className="text-sm text-center"
+                style={{ 
+                  color: '#64748B',
+                  fontFamily: "'Inter', sans-serif",
+                }}
               >
                 Start your shopping journey
               </p>
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Full Name */}
+            <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Full Name field */}
               <div>
                 <label
-                  className="block text-[10px] font-bold uppercase tracking-widest mb-2"
-                  style={{ color: 'rgba(255,255,255,0.4)', fontFamily: "'JetBrains Mono', monospace" }}
+                  className="block text-xs font-medium uppercase tracking-wider mb-2.5"
+                  style={{ 
+                    color: '#64748B',
+                    fontFamily: "'JetBrains Mono', monospace",
+                  }}
                 >
                   Full Name
                 </label>
                 <div className="relative">
                   <User
-                    size={16}
+                    size={18}
                     className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none"
-                    style={{ color: 'rgba(255,255,255,0.25)' }}
+                    style={{ color: '#64748B' }}
                   />
                   <input
                     type="text"
@@ -230,19 +309,22 @@ const Register = () => {
                 </div>
               </div>
 
-              {/* Email */}
+              {/* Email field */}
               <div>
                 <label
-                  className="block text-[10px] font-bold uppercase tracking-widest mb-2"
-                  style={{ color: 'rgba(255,255,255,0.4)', fontFamily: "'JetBrains Mono', monospace" }}
+                  className="block text-xs font-medium uppercase tracking-wider mb-2.5"
+                  style={{ 
+                    color: '#64748B',
+                    fontFamily: "'JetBrains Mono', monospace",
+                  }}
                 >
                   Email Address
                 </label>
                 <div className="relative">
                   <Mail
-                    size={16}
+                    size={18}
                     className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none"
-                    style={{ color: 'rgba(255,255,255,0.25)' }}
+                    style={{ color: '#64748B' }}
                   />
                   <input
                     type="email"
@@ -256,19 +338,22 @@ const Register = () => {
                 </div>
               </div>
 
-              {/* Password */}
+              {/* Password field */}
               <div>
                 <label
-                  className="block text-[10px] font-bold uppercase tracking-widest mb-2"
-                  style={{ color: 'rgba(255,255,255,0.4)', fontFamily: "'JetBrains Mono', monospace" }}
+                  className="block text-xs font-medium uppercase tracking-wider mb-2.5"
+                  style={{ 
+                    color: '#64748B',
+                    fontFamily: "'JetBrains Mono', monospace",
+                  }}
                 >
                   Password
                 </label>
                 <div className="relative">
                   <Lock
-                    size={16}
+                    size={18}
                     className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none"
-                    style={{ color: 'rgba(255,255,255,0.25)' }}
+                    style={{ color: '#64748B' }}
                   />
                   <input
                     type={showPassword ? "text" : "password"}
@@ -284,115 +369,166 @@ const Register = () => {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer"
-                    style={{ color: 'rgba(255,255,255,0.3)' }}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer transition-colors duration-200"
+                    style={{ color: '#64748B' }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#0052FF'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = '#64748B'}
                   >
-                    {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
                 </div>
               </div>
 
-              {/* Password strength hint */}
+        
               {form.password && (
-                <div className="flex items-center gap-1.5">
-                  <div className="flex gap-1 flex-1">
+                <div className="flex items-center gap-2">
+                  <div className="flex gap-1.5 flex-1">
                     {[1, 2, 3, 4].map((i) => (
                       <div
                         key={i}
-                        className="h-1 flex-1 rounded-full transition-all duration-300"
+                        className="h-1.5 flex-1 rounded-full transition-all duration-300"
                         style={{
                           background:
                             form.password.length >= i * 3
-                              ? form.password.length >= 12 ? '#22c55e'
-                              : form.password.length >= 8 ? '#F7931A'
-                              : '#EA580C'
-                              : 'rgba(255,255,255,0.08)',
+                              ? form.password.length >= 12 
+                                ? 'linear-gradient(to right, #0052FF, #4D7CFF)' // Strong - gradient
+                                : form.password.length >= 8 
+                                  ? '#0052FF' // Good - solid blue
+                                  : '#4D7CFF' // Fair - lighter blue
+                              : '#E2E8F0', // Unfilled - border color
                         }}
                       />
                     ))}
                   </div>
                   <span
-                    className="text-[9px] font-bold uppercase"
+                    className="text-xs font-medium uppercase tracking-wide"
                     style={{
-                      color: form.password.length >= 12 ? '#22c55e'
-                        : form.password.length >= 8 ? '#F7931A'
-                        : form.password.length >= 6 ? '#EA580C'
-                        : 'rgba(255,255,255,0.3)',
+                      color: form.password.length >= 12 
+                        ? '#0052FF'
+                        : form.password.length >= 8 
+                          ? '#0052FF'
+                          : form.password.length >= 6 
+                            ? '#4D7CFF'
+                            : '#64748B',
                       fontFamily: "'JetBrains Mono', monospace",
+                      fontSize: '10px',
                     }}
                   >
-                    {form.password.length >= 12 ? 'Strong'
-                      : form.password.length >= 8 ? 'Good'
-                      : form.password.length >= 6 ? 'Fair'
-                      : 'Weak'}
+                    {form.password.length >= 12 
+                      ? 'Strong'
+                      : form.password.length >= 8 
+                        ? 'Good'
+                        : form.password.length >= 6 
+                          ? 'Fair'
+                          : 'Weak'}
                   </span>
                 </div>
               )}
 
-              {/* Submit button */}
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full h-12 sm:h-14 rounded-xl font-bold flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer mt-2"
+                className="w-full h-14 rounded-xl font-semibold flex items-center justify-center gap-2.5 transition-all duration-200 group relative overflow-hidden mt-6"
                 style={{
-                  background: loading ? 'rgba(247,147,26,0.5)' : 'linear-gradient(to right, #EA580C, #F7931A)',
-                  color: '#fff',
-                  fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: '12px',
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  boxShadow: loading ? 'none' : '0 4px 20px rgba(247,147,26,0.3)',
+                  background: loading 
+                    ? 'linear-gradient(to right, rgba(0, 82, 255, 0.6), rgba(77, 124, 255, 0.6))' 
+                    : 'linear-gradient(to right, #0052FF, #4D7CFF)',
+                  color: '#FFFFFF',
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: '15px',
+                  letterSpacing: '-0.01em',
+                  boxShadow: loading 
+                    ? 'none' 
+                    : '0 4px 14px rgba(0, 82, 255, 0.25)',
                   border: 'none',
+                  cursor: loading ? 'not-allowed' : 'pointer',
                 }}
                 onMouseEnter={(e) => {
-                  if (!loading) e.currentTarget.style.transform = 'scale(1.02)';
+                  if (!loading) {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 82, 255, 0.35)';
+                    e.currentTarget.style.filter = 'brightness(1.1)';
+                  }
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'scale(1)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = loading 
+                    ? 'none' 
+                    : '0 4px 14px rgba(0, 82, 255, 0.25)';
+                  e.currentTarget.style.filter = 'brightness(1)';
+                }}
+                onMouseDown={(e) => {
+                  if (!loading) e.currentTarget.style.transform = 'translateY(-2px) scale(0.98)';
+                }}
+                onMouseUp={(e) => {
+                  if (!loading) e.currentTarget.style.transform = 'translateY(-2px) scale(1)';
                 }}
               >
                 {loading ? (
                   <>
-                    <Loader2 size={18} className="animate-spin" />
-                    Creating Account...
+                    <Loader2 size={20} className="animate-spin" />
+                    <span>Creating Account...</span>
                   </>
                 ) : (
                   <>
-                    Create Account <ArrowRight size={16} />
+                    <span>Create Account</span>
+                    <ArrowRight 
+                      size={18} 
+                      className="transition-transform duration-200 group-hover:translate-x-1"
+                    />
                   </>
                 )}
               </button>
             </form>
 
             {/* Divider */}
-            <div className="flex items-center gap-4 my-6">
-              <div className="flex-1 h-px" style={{ background: 'rgba(255,255,255,0.06)' }} />
+            <div className="flex items-center gap-4 my-7">
+              <div className="flex-1 h-px" style={{ background: '#E2E8F0' }} />
               <span
-                className="text-[9px] font-bold uppercase tracking-widest"
-                style={{ color: 'rgba(255,255,255,0.2)', fontFamily: "'JetBrains Mono', monospace" }}
+                className="text-xs font-medium uppercase tracking-wider"
+                style={{ 
+                  color: '#64748B',
+                  fontFamily: "'JetBrains Mono', monospace",
+                }}
               >
                 or
               </span>
-              <div className="flex-1 h-px" style={{ background: 'rgba(255,255,255,0.06)' }} />
+              <div className="flex-1 h-px" style={{ background: '#E2E8F0' }} />
             </div>
 
-            {/* Login link */}
+           
             <p
               className="text-center text-sm"
-              style={{ color: 'rgba(255,255,255,0.4)' }}
+              style={{ color: '#64748B' }}
             >
               Already have an account?{" "}
               <Link
                 to="/login"
-                className="font-bold transition-colors"
-                style={{ color: '#F7931A' }}
-                onMouseEnter={(e) => e.currentTarget.style.color = '#FFD600'}
-                onMouseLeave={(e) => e.currentTarget.style.color = '#F7931A'}
+                className="font-semibold transition-all duration-200 inline-block"
+                style={{ color: '#0052FF' }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#4D7CFF';
+                  e.currentTarget.style.transform = 'translateX(2px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#0052FF';
+                  e.currentTarget.style.transform = 'translateX(0)';
+                }}
               >
                 Sign In
               </Link>
             </p>
           </div>
+
+         
+          <div
+            className="absolute -bottom-4 -left-4 w-20 h-20 rounded-2xl pointer-events-none hidden sm:block"
+            style={{
+              background: 'linear-gradient(135deg, #0052FF, #4D7CFF)',
+              opacity: 0.08,
+              boxShadow: '0 8px 32px rgba(0, 82, 255, 0.2)',
+            }}
+          />
         </div>
       </div>
     </>
